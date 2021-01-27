@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  @apply px-3;
+
+  @screen sm {
+    @apply px-0;
+    max-width: 640px;
+  }
+  @screen lg {
+    max-width: 900px;
+  }
+  @screen xl {
+    max-width: 1400px;
+  }
+}

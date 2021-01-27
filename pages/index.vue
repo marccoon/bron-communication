@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+        <Logo />
       <h1 class="title">app</h1>
       <div class="links">
         <a

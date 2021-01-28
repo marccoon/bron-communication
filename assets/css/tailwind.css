@@ -23,7 +23,6 @@
   src: url(../fonts/Roboto-Bold.ttf);
 }
 
-
 html, body {
   font-family: "Roboto";
   font-weight: 300;
@@ -31,6 +30,12 @@ html, body {
 }
 * {
   outline: none!important;
+}
+
+@layer components {
+  .pagination-item {
+    background: red !important;
+  }
 }
 
 .container {

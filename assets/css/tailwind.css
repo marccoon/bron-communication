@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Roboto";
+  font-weight: 300;
+  src: url(../fonts/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url(../fonts/Roboto-Medium.ttf);
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  src: url(../fonts/Roboto-Bold.ttf);
+}
+
+
+html, body {
+  font-family: "Roboto";
+  font-weight: 300;
+  @apply bg-body text-white;
+}
+* {
+  outline: none!important;
+}
+
 .container {
   @apply px-3;
 
@@ -10,9 +41,20 @@
     max-width: 640px;
   }
   @screen lg {
+    @apply px-0;
     max-width: 900px;
   }
   @screen xl {
+    @apply px-0;
     max-width: 1400px;
+  }
+}
+
+.grid-block {
+  @screen sm{
+    @apply grid grid-cols-2 gap-x-8;
+  }
+  @screen xl{
+    @apply grid grid-cols-2 gap-x-10;
   }
 }

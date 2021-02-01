@@ -1,0 +1,81 @@
+<template>
+  <div class="grid lg:grid-cols-2 xl:gap-x-10 lg:gap-x-20 sm:gap-y-10 gap-y-5"
+       :class="{
+          'grid-cols-1': imgFull,
+          'sm:grid-cols-2 grid-cols-1 sm:gap-x-10': !imgFull
+        }"
+  >
+
+    <img
+        :src="img"
+        alt=""
+        class="w-full"
+        :class="{
+          'order-2': reverse,
+          'order-1': !reverse,
+        }"
+    >
+    <div
+        :class="{
+          'order-1': reverse,
+          'order-2': !reverse,
+       }"
+    >
+      <p
+          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs"
+          v-html="text"></p>
+      <n-link :to="link" tag="button" class="text-link underline transition-all duration-150
+              xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
+        ">
+        {{linkName}}
+      </n-link>
+    </div>
+
+
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TextImg",
+  props: {
+    img: {
+      type: String,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    linkName: {
+      type: String,
+      required: false,
+      default: false,
+    },
+    link: {
+      type: String,
+      required: false,
+      default: false,
+    },
+    reverse: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    imgFull: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    // textCenter: {
+    //   type: Boolean,
+    //   required: false,
+    //   default: false
+    // },
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

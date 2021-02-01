@@ -33,13 +33,51 @@ html, body {
 }
 
 @layer components {
+  .swiper-pagination {
+    display: flex !important;
+    flex-direction: column;
+    top: 50% !important;
+    right: 0 !important;
+  }
   .pagination-item {
-    background: red !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    margin: 2px 0;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-size: 30px !important;
+    font-weight: 500;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #786AF7 !important;
+  }
+  @screen sm {
+    .swiper-pagination {
+      top: 50% !important;
+      right: 0 !important;
+      transform: translateY(-50%) !important;
+    }
+
+    .pagination-item {
+      width: 56px !important;
+      height: 56px !important;
+      font-size: 40px !important;
+    }
+
+    /*.swiper-pagination-bullet-active {*/
+    /*  background-color: #786AF7 !important;*/
+    /*}*/
   }
 }
 
 .container {
-  @apply px-3;
+  @apply px-2.5;
 
   @screen sm {
     @apply px-0;
@@ -59,7 +97,39 @@ html, body {
   @screen sm{
     @apply grid grid-cols-2 gap-x-8;
   }
+  @screen lg{
+    @apply grid grid-cols-2 gap-x-20;
+  }
   @screen xl{
     @apply grid grid-cols-2 gap-x-10;
   }
+}
+
+.title-block {
+  @apply text-2xl font-bold;
+
+  @screen sm{
+    @apply text-3xl font-bold;
+  }
+  @screen lg{
+    @apply text-4xl font-bold;
+  }
+  @screen xl{
+    @apply text-4xl font-bold;
+  }
+}
+
+.title {
+  @apply text-3xl font-bold mb-10;
+
+  @screen sm{
+    @apply text-4xl font-bold mb-10;
+  }
+  @screen lg{
+    @apply text-6xl font-bold mb-16;
+  }
+  @screen xl{
+    @apply text-7xl font-bold mb-20;
+  }
+
 }

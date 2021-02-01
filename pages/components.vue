@@ -1,12 +1,67 @@
 <template>
   <div class="container">
-    <Button
-        btn="components"
-        link="/components"
+
+<!--    Homepage-->
+    <ProjectSlider
+        :slides="projectSlides"
     />
+    <TextImg
+        img="img/homepage-img-1.png"
+        text="Working in a large-scale media organization has empowered us to establish relationships with
+              major media and advertising companies in Malaysia as well as to maintain excellent collaborative efforts
+              with the media and advertisers, making us an ideal agent of many mainstream media in Malaysia."
+        linkName="learn more about the company"
+        link="/company"
+        :reverse="true"
+        :imgFull="true"
+
+    />
+    <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto  border border-red-200">
+      <div>
+        <h2 class="title">Our Services</h2>
+      </div>
+      <div>
+        <Service v-for="(service, index) in services" :key="index"
+                 :ref="`slide${index}`"
+                 :img="service.img"
+                 :title="service.title"
+                 :text="service.text"
+        />
+      </div>
+    </div>
+
+
+
+<!--    Company-->
+
+
+
+    <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto  border border-red-200">
+      <div>
+        <h2 class="title">Our team</h2>
+      </div>
+      <TeamSlide
+          :slides="teamSlides"
+      />
+<!--      <div class="lg:w-3/4 w-full xl:mx-0 mx-auto ">-->
+<!--        <div class="xl:w-full lg:w-3/4 sm:w-4/5 w-5/6 border border-red-200" v-for="(slide, index) in teamSlides" :key="index"-->
+<!--             :ref="`slide${index}`"-->
+<!--        >-->
+<!--          <img-->
+<!--              :src="slide.img"-->
+<!--              class="w-full object-cover"-->
+<!--              alt="">-->
+<!--          <h4 class="title-block text-title-color lg:mt-5 mt-2.5">{{slide.name}}</h4>-->
+<!--          <div class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs mt-2.5">{{slide.position}}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+    </div>
+
+
 
     <TextImg
-        img="img/company-img-1.png"
+        img="img/text-img-1.png"
         text="Bron Communications Sdn. Bhd, a one-stop media advertising
               industry by producing all sorts of advertisements that meet expected
               marketing effects. <br><br>
@@ -19,16 +74,25 @@
               exceeding your expectations!"
         linkName=""
         link=""
-        :reverse="false"
-        :imgFull="false"
+        reverse=""
 
     />
-    <section class="grid xl:grid-cols-2 grid-cols-1 xl:gap-x-10 xl:w-full lg:w-3/4 mx-auto">
-      <TeamSlider
-          :slides="teamSlides"
-      />
-    </section>
 
+    <div>
+      <AboutUs v-for="(item, index) in aboutUs" :key="index"
+               :ref="`slide${index}`"
+               :img="item.img"
+               :title="item.title"
+               :text="item.text"
+               :reverse="item.reverse"
+      />
+    </div>
+    <ProjectSlider
+        :slides="projectSlides"
+    />
+    <Feedback
+        class="mx-auto"
+    />
   </div>
 
 </template>
@@ -40,8 +104,8 @@ export default {
       {
         img: 'img/project-img.png',
         title: 'Project name',
-        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
-              ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate! <br>\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!',
         btn: 'view project',
         link:'/',
         subtitle: true,
@@ -70,17 +134,7 @@ export default {
         img: 'img/team-img.png',
         name: 'Mohd Fariz Zulkepley',
         position: 'Founder + CEO',
-      },
-      {
-        img: 'img/team-img.png',
-        name: 'Mohd Fariz Zulkepley',
-        position: 'Founder + CEO',
-      },
-      {
-        img: 'img/team-img.png',
-        name: 'Mohd Fariz Zulkepley',
-        position: 'Founder + CEO',
-      },
+      }
     ],
     services: [
       {

@@ -15,18 +15,28 @@ module.exports = {
       ...theme('colors'),
       'btn': '#fff',
       'btnColor': '#786AF7',
+      'title-color': '#786AF7',
+      'link': '#786AF7',
     }),
     backgroundColor: theme => ({
       ...theme('colors'),
       'btn': '#786AF7',
       'btnFocus': '#5645F5',
-      'pagination': '#C9AB81',
       'body': '#141414',
       'menu': '#0B1315',
       'dishes': '#0F1D22',
 
+
     }),
-    extend: {},
+
+    extend: {
+      height: {
+        '88': '22rem',
+        '104': '26.5rem',
+        '154': '38.5rem',
+        '172': '44rem',
+      },
+    },
   },
   variants: {
     extend: {},

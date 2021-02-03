@@ -22,7 +22,7 @@
         />
       </div>
     </section>
-    <section class="xl:mb-32 lg:mb-24 sm:mb-20 mb-12 section-padding">
+    <section class="section-padding">
       <div class="container">
         <Feedback
             class="mx-auto"

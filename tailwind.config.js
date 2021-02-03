@@ -24,7 +24,7 @@ module.exports = {
       'btnFocus': '#5645F5',
       'body': '#141414',
       'menu': '#786AF7',
-      'footer': '#786AF7',
+      'footer': '#5645F5',
     }),
 
     extend: {

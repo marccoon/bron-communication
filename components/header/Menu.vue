@@ -10,7 +10,7 @@
             </nuxt-link>
           </li>
           <li class="xl:ml-12 lg:ml-7">
-            <nuxt-link to="/">
+            <nuxt-link to="/expertise">
               Expertise
             </nuxt-link>
           </li>

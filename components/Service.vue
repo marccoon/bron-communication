@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-red-200 xl:mt-20 lg:mt-16">
+  <div class="border border-red-200 ">
     <div class="flex sm:items-center items-start sm:flex-row flex-col">
       <img
           :src="img"

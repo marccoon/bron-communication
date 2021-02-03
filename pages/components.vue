@@ -2,9 +2,9 @@
   <div class="container">
 
 <!--    Homepage-->
-    <ProjectSlider
-        :slides="projectSlides"
-    />
+<!--    <ProjectSlider-->
+<!--        :slides="projectSlides"-->
+<!--    />-->
     <TextImg
         img="img/homepage-img-1.png"
         text="Working in a large-scale media organization has empowered us to establish relationships with
@@ -16,19 +16,19 @@
         :imgFull="true"
 
     />
-    <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto  border border-red-200">
-      <div>
-        <h2 class="title">Our Services</h2>
-      </div>
-      <div>
-        <Service v-for="(service, index) in services" :key="index"
-                 :ref="`slide${index}`"
-                 :img="service.img"
-                 :title="service.title"
-                 :text="service.text"
-        />
-      </div>
-    </div>
+<!--    <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto  border border-red-200">-->
+<!--      <div>-->
+<!--        <h2 class="title">Our Services</h2>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <Service v-for="(service, index) in services" :key="index"-->
+<!--                 :ref="`slide${index}`"-->
+<!--                 :img="service.img"-->
+<!--                 :title="service.title"-->
+<!--                 :text="service.text"-->
+<!--        />-->
+<!--      </div>-->
+<!--    </div>-->
 
 
 
@@ -40,9 +40,9 @@
       <div>
         <h2 class="title">Our team</h2>
       </div>
-      <TeamSlide
-          :slides="teamSlides"
-      />
+<!--      <TeamSlide-->
+<!--          :slides="teamSlides"-->
+<!--      />-->
 <!--      <div class="lg:w-3/4 w-full xl:mx-0 mx-auto ">-->
 <!--        <div class="xl:w-full lg:w-3/4 sm:w-4/5 w-5/6 border border-red-200" v-for="(slide, index) in teamSlides" :key="index"-->
 <!--             :ref="`slide${index}`"-->
@@ -94,7 +94,29 @@
         class="mx-auto"
     />
   </div>
+<!--  <TextImg-->
+<!--      img="img/company-img-1.png"-->
+<!--      text="Bron Communications Sdn. Bhd, a one-stop media advertising-->
+<!--              industry by producing all sorts of advertisements that meet expected-->
+<!--              marketing effects. <br><br>-->
+<!--              We vow to make premium advertisements available to all. In fact, we-->
+<!--              have produced big brand advertisements for many Small Medium-->
+<!--              Enterprise (SMEs) so that the latter can shine like big brands.<br><br>-->
+<!--              If your business needs an expert in mass communication and one-stop-->
+<!--              production to improve your sales performance and create overnight-->
+<!--              success for your brand, we are here to give you delightful surprises-->
+<!--              exceeding your expectations!"-->
+<!--      linkName=""-->
+<!--      link=""-->
+<!--      :reverse="false"-->
+<!--      :imgFull="false"-->
 
+<!--  />-->
+<!--  <section class="grid xl:grid-cols-2 grid-cols-1 xl:gap-x-10 xl:w-full lg:w-3/4 mx-auto">-->
+<!--    <TeamSlider-->
+<!--        :slides="teamSlides"-->
+<!--    />-->
+<!--  </section>-->
 </template>
 
 <script>
@@ -108,7 +130,6 @@ export default {
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
         btn: 'view project',
         link:'/',
-        subtitle: true,
       },
       {
         img: 'img/project-img.png',
@@ -117,7 +138,6 @@ export default {
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
         btn: 'view project',
         link:'/',
-        subtitle: true,
       },
       {
         img: 'img/project-img.png',
@@ -126,7 +146,6 @@ export default {
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
         btn: 'view project',
         link:'/',
-        subtitle: true,
       },
     ],
     teamSlides: [
@@ -134,7 +153,17 @@ export default {
         img: 'img/team-img.png',
         name: 'Mohd Fariz Zulkepley',
         position: 'Founder + CEO',
-      }
+      },
+      {
+        img: 'img/team-img.png',
+        name: 'Mohd Fariz Zulkepley',
+        position: 'Founder + CEO',
+      },
+      {
+        img: 'img/team-img.png',
+        name: 'Mohd Fariz Zulkepley',
+        position: 'Founder + CEO',
+      },
     ],
     services: [
       {

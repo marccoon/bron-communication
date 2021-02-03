@@ -8,10 +8,18 @@
     </div>
 
 
-    <div class="flex flex-col xl:w-full sm:w-1/2 w-full lg:justify-end flex-start">
+    <div class="flex flex-col xl:w-full sm:w-1/2 w-full"
+         :class="{
+                    'justify-center': !btn,
+                    'lg:justify-end flex-start': btn
+                  }"
+    >
 
       <div class="transform xl:-translate-x-48 lg:-translate-x-28 sm:-translate-x-20 xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5">
-        <div class="flex items-center xl:mb-7 mb-2.5">
+        <div
+            v-if="subtitle"
+            class="flex items-center xl:mb-7 mb-2.5 "
+        >
           <span class="uppercase xl:text-xl lg:text-base text-xs">portfolio category</span>
           <img src="~assets/img/btn-icon.svg" class="lg:w-auto w-7 lg:ml-5 ml-4">
         </div>
@@ -21,18 +29,11 @@
         >
         </h3>
       </div>
-      <div
-          class="flex flex-col justify-between xl:h-88 lg:h-60 sm:h-48 xl:w-3/5 lg:w-3/4 sm:w-5/6"
-      >
+      <div class="flex flex-col justify-between xl:h-88 lg:h-60 sm:h-48 xl:w-3/5 lg:w-3/4 sm:w-5/6">
         <p
             v-html="text"
             class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs leading-normal"
         ></p>
-        <Button
-            :btn="btn"
-            :link="link"
-            class="max-w-xs sm:max-w-full sm:mt-0 mt-5"
-        />
       </div>
     </div>
   </div>
@@ -55,17 +56,6 @@ export default {
       type: String,
       required: true,
     },
-    btn: {
-      type: String,
-      required: false,
-      default: false
-    },
-    link: {
-      type: String,
-      required: false,
-      default: false
-    },
-
   },
 }
 </script>

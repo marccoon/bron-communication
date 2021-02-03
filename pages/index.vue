@@ -1,33 +1,68 @@
 <template>
-  <div class="container">
+  <div class="">
+<!--    <Header />-->
+    <section class="w-full min-h-screen flex items-center relative">
+
+      <div class="container border border-red-200">
+        <h1 class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto">We Offer You Pleasant Surprises through Our Ads & Videos</h1>
+        <img src="~assets/img/homepage-bg.png" class="absolute top-0 bottom-0 left-0 right-0 h-full z-0">
+      </div>
+    </section>
+    <section class="mt-36 section-padding ">
+      <div class="container border border-red-200">
+        <h2 class="title">Our Works</h2>
+        <ProjectSlider
+            :slides="projectSlides"
+        />
+      </div>
+    </section>
+    <section class="section-padding ">
+      <div class="container border border-red-200">
+        <h2 class="title">Make Your Brand a Renowned Star Brand in Mainstream Media</h2>
+        <TextImg
+            img="img/homepage-img-1.png"
+            text="Working in a large-scale media organization has empowered us to establish relationships with
+              major media and advertising companies in Malaysia as well as to maintain excellent collaborative efforts
+              with the media and advertisers, making us an ideal agent of many mainstream media in Malaysia."
+            linkName="learn more about the company"
+            link="/company"
+            :reverse="true"
+            :imgFull="true"
+        />
+      </div>
+    </section>
+    <section class="section-padding ">
+      <div class="container xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto ">
+        <div>
+          <h2 class="title">Our Services</h2>
+        </div>
+        <div>
+          <Service v-for="(service, index) in services" :key="index"
+                   :class="{
+                      'mb-0': (index===3),
+                      'mb-20': (index<3)
+                   }"
+                   :ref="`slide${index}`"
+                   :img="service.img"
+                   :title="service.title"
+                   :text="service.text"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="mb-36 section-padding">
+      <div class="container">
+        <Feedback
+            class="mx-auto"
+        />
+      </div>
+    </section>
     <Button
         btn="components"
         link="/components"
     />
 
-    <TextImg
-        img="img/company-img-1.png"
-        text="Bron Communications Sdn. Bhd, a one-stop media advertising
-              industry by producing all sorts of advertisements that meet expected
-              marketing effects. <br><br>
-              We vow to make premium advertisements available to all. In fact, we
-              have produced big brand advertisements for many Small Medium
-              Enterprise (SMEs) so that the latter can shine like big brands.<br><br>
-              If your business needs an expert in mass communication and one-stop
-              production to improve your sales performance and create overnight
-              success for your brand, we are here to give you delightful surprises
-              exceeding your expectations!"
-        linkName=""
-        link=""
-        :reverse="false"
-        :imgFull="false"
 
-    />
-    <section class="grid xl:grid-cols-2 grid-cols-1 xl:gap-x-10 xl:w-full lg:w-3/4 mx-auto">
-      <TeamSlider
-          :slides="teamSlides"
-      />
-    </section>
 
   </div>
 

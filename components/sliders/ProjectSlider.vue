@@ -14,12 +14,10 @@
             :text="slide.text"
             :btn="slide.btn"
             :link="slide.link"
-            :subtitle="slide.subtitle"
-            :widthFull="slide.widthFull"
         />
       </SwiperSlide>
     </Swiper>
-        <div class="swiper-pagination" slot="pagination">
+        <div class="swiper-pagination-1" slot="pagination">
         </div>
   </div>
 </template>
@@ -36,31 +34,23 @@ export default {
   },
   data: () => ({
     sliderOptions: {
-      // direction: 'vertical',
+      // direction: 'ho',
+      breakpoints: {
+        660: {
+          direction: 'vertical',
+        },
+      },
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-1',
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
         },
-        breakpoints: {
-          660: {
-            direction: 'vertical',
-          },
-        }
+
       },
     },
   }),
-  methods: {
-  },
-  computed: {
-    height () {
-      return this.$refs.slide0[0].$el.scrollHeight
-    },
-    slider() {
-      return this.$refs.slider.$swiper
-    }
-  },
+
 }
 </script>
 

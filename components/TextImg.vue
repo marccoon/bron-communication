@@ -2,7 +2,7 @@
   <div class="grid lg:grid-cols-2 xl:gap-x-10 lg:gap-x-20 sm:gap-y-10 gap-y-5"
        :class="{
           'grid-cols-1': imgFull,
-          'sm:grid-cols-2 grid-cols-1 sm:gap-x-10': !imgFull
+          'sm:grid-cols-2 grid-cols-1 sm:gap-x-10': !imgFull,
         }"
   >
 

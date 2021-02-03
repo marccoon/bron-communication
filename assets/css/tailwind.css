@@ -33,11 +33,13 @@ html, body {
 }
 
 @layer components {
-  .swiper-pagination {
+  .swiper-pagination, .swiper-pagination-1 {
+    position: absolute;
     display: flex !important;
     flex-direction: column;
     top: 50% !important;
     right: 0 !important;
+    transform: translateY(-50%) !important;
   }
   .pagination-item {
     width: 40px !important;
@@ -58,11 +60,7 @@ html, body {
     background-color: #786AF7 !important;
   }
   @screen sm {
-    .swiper-pagination {
-      top: 50% !important;
-      right: 0 !important;
-      transform: translateY(-50%) !important;
-    }
+
 
     .pagination-item {
       width: 56px !important;
@@ -132,4 +130,30 @@ html, body {
     @apply text-7xl font-bold mb-20;
   }
 
+}
+.main-title {
+  @apply text-4xl font-bold;
+
+@screen sm{
+  @apply text-6xl font-bold;
+}
+@screen lg{
+  @apply text-7xl font-bold;
+}
+@screen xl{
+  @apply text-8xl font-bold;
+}
+}
+.section-padding {
+  @apply py-12;
+
+@screen sm{
+  @apply py-20;
+}
+@screen lg{
+  @apply py-24;
+}
+@screen xl{
+  @apply py-36;
+}
 }

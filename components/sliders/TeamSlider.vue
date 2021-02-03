@@ -32,20 +32,22 @@ export default {
   },
   data: () => ({
     sliderOptions: {
-      direction: 'vertical',
+      // direction: 'horizontal',
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
         },
-        breakpoints: {
-          660: {
-            // direction: 'vertical',
-          },
-        }
+
       },
+      breakpoints: {
+        660: {
+          direction: 'vertical',
+        },
+      }
     },
+
   }),
 
 }

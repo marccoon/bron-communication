@@ -1,6 +1,5 @@
 <template>
-  <div class="border border-red-200 xl:mt-28 sm:mt-16 mt-10 xl:grid xl:grid-cols-2 xl:gap-x-10
-              flex justify-center sm:flex-row flex-col">
+  <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 flex justify-center sm:flex-row flex-col">
     <div
         class="xl:w-full w-1/3 sm:mx-0 mx-auto "
          :class="{
@@ -25,7 +24,7 @@
       <h3 class="text-title-color title-block sm:mt-0 mt-5">{{title}}</h3>
       <p
           v-html="text"
-          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs sm:mt-3 mt-2.5"
+          class=" font-light xl:text-2xl lg:text-xl sm:text-base xl:leading-normal text-xs sm:mt-3 mt-2.5"
       ></p>
     </div>
 

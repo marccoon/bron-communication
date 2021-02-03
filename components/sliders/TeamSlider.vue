@@ -15,7 +15,7 @@
         />
       </SwiperSlide>
     </Swiper>
-    <div class="swiper-pagination" slot="pagination">
+    <div class="swiper-pagination-2" slot="pagination">
     </div>
   </div>
 </template>
@@ -32,22 +32,21 @@ export default {
   },
   data: () => ({
     sliderOptions: {
-      // direction: 'horizontal',
+      // direction: 'ho',
+      breakpoints: {
+        660: {
+          direction: 'vertical',
+        },
+      },
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-2',
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
         },
 
       },
-      breakpoints: {
-        660: {
-          direction: 'vertical',
-        },
-      }
     },
-
   }),
 
 }

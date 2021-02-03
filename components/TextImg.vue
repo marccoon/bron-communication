@@ -19,10 +19,11 @@
         :class="{
           'order-1': reverse,
           'order-2': !reverse,
+          'flex flex-col justify-center': textCenter
        }"
     >
       <p
-          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs"
+          class="leading-normal font-light xl:text-2xl lg:text-xl sm:text-base text-xs "
           v-html="text"></p>
       <n-link :to="link" tag="button" class="text-link underline transition-all duration-150
               xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
@@ -67,11 +68,11 @@ export default {
       required: false,
       default: false
     },
-    // textCenter: {
-    //   type: Boolean,
-    //   required: false,
-    //   default: false
-    // },
+    textCenter: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-<!--  <nuxt-link :to="localePath('/')">-->
-    <img src="~assets/img/logo.svg" alt="" class="sm:w-auto ">
-<!--  </nuxt-link>-->
+  <nuxt-link to="/">
+    <img src="~assets/img/logo.svg" alt="" class="">
+  </nuxt-link>
 </template>
 
 <script>

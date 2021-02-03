@@ -26,14 +26,14 @@
 html, body {
   font-family: "Roboto";
   font-weight: 300;
-  @apply bg-body text-white;
+  @apply bg-body text-white ;
 }
 * {
   outline: none!important;
 }
 
 @layer components {
-  .swiper-pagination, .swiper-pagination-1 {
+  .swiper-pagination-1, .swiper-pagination-2 {
     position: absolute;
     display: flex !important;
     flex-direction: column;
@@ -127,21 +127,21 @@ html, body {
     @apply text-6xl font-bold mb-16;
   }
   @screen xl{
-    @apply text-7xl font-bold mb-20;
+    @apply text-7xl font-bold mb-20 leading-normal;
   }
 
 }
 .main-title {
-  @apply text-4xl font-bold;
+  @apply text-4xl font-bold leading-tight;
 
 @screen sm{
-  @apply text-6xl font-bold;
+  @apply text-6xl font-bold leading-tight;
 }
 @screen lg{
-  @apply text-7xl font-bold;
+  @apply text-7xl font-bold leading-tight;
 }
 @screen xl{
-  @apply text-8xl font-bold;
+  @apply text-8xl font-bold leading-tight;
 }
 }
 .section-padding {
@@ -154,6 +154,19 @@ html, body {
   @apply py-24;
 }
 @screen xl{
-  @apply py-36;
+  @apply py-32;
+}
+}
+.wrap-padding {
+  @apply pt-32 pb-12;
+
+@screen sm{
+  @apply pt-48 pb-20;
+}
+@screen lg{
+  @apply pt-56 pb-24;
+}
+@screen xl{
+  @apply pt-48 pb-36 ;
 }
 }

@@ -23,10 +23,8 @@ module.exports = {
       'btn': '#786AF7',
       'btnFocus': '#5645F5',
       'body': '#141414',
-      'menu': '#0B1315',
-      'dishes': '#0F1D22',
-
-
+      'menu': '#786AF7',
+      'footer': '#786AF7',
     }),
 
     extend: {

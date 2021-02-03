@@ -1,14 +1,15 @@
 <template>
   <div class="">
-<!--    <Header />-->
     <section class="w-full min-h-screen flex items-center relative">
 
-      <div class="container border border-red-200">
-        <h1 class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto">We Offer You Pleasant Surprises through Our Ads & Videos</h1>
-        <img src="~assets/img/homepage-bg.png" class="absolute top-0 bottom-0 left-0 right-0 h-full z-0">
+      <div class="container">
+        <h1 class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto">
+          We Offer You Pleasant Surprises through Our Ads & Videos
+        </h1>
+        <img src="~assets/img/homepage-bg.png" class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0">
       </div>
     </section>
-    <section class="mt-36 section-padding ">
+    <section class="xl:mt-32 lg:mt-24 sm:mt-20 mt-12 section-padding ">
       <div class="container border border-red-200">
         <h2 class="title">Our Works</h2>
         <ProjectSlider
@@ -39,8 +40,8 @@
         <div>
           <Service v-for="(service, index) in services" :key="index"
                    :class="{
-                      'mb-0': (index===3),
-                      'mb-20': (index<3)
+                      'mb-0': (index === services.length - 1),
+                      'mb-20': (index !== services.length - 1)
                    }"
                    :ref="`slide${index}`"
                    :img="service.img"
@@ -50,17 +51,17 @@
         </div>
       </div>
     </section>
-    <section class="mb-36 section-padding">
+    <section class="xl:mb-32 lg:mb-24 sm:mb-20 mb-12 section-padding">
       <div class="container">
         <Feedback
             class="mx-auto"
         />
       </div>
     </section>
-    <Button
-        btn="components"
-        link="/components"
-    />
+<!--    <Button-->
+<!--        btn="components"-->
+<!--        link="/components"-->
+<!--    />-->
 
 
 

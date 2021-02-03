@@ -78,15 +78,7 @@
 
     />
 
-    <div>
-      <AboutUs v-for="(item, index) in aboutUs" :key="index"
-               :ref="`slide${index}`"
-               :img="item.img"
-               :title="item.title"
-               :text="item.text"
-               :reverse="item.reverse"
-      />
-    </div>
+
     <ProjectSlider
         :slides="projectSlides"
     />
@@ -200,54 +192,7 @@ export default {
             'contacts, we can get your brand heard and amplify its messages to journalists, influencers and bloggers',
       },
     ],
-    aboutUs: [
-      {
-        img: 'img/about-1.png',
-        title: 'Rich experience:',
-        text: 'Our team have accumulated rich\n' +
-            'practical experience for many years, and can lead the\n' +
-            'team to complete any project;\n ',
-        reverse: false,
-      },
-      {
-        img: 'img/about-2.png',
-        title: 'Professional team:',
-        text: 'We have our own dedicated\n' +
-            'advertising and video production team, consisting of\n' +
-            'highly experienced team members, to come up with\n' +
-            'productions that far exceed your expectations;',
-        reverse: true,
-      },
-      {
-        img: 'img/about-3.png',
-        title: 'Well-equipped production:',
-        text: 'High-quality advertising\n' +
-            'and video production requires sophisticated\n' +
-            'production equipment. At Bron Communications Sdn.\n' +
-            'Bhd., there is always abundant equipment to ensure\n' +
-            'smooth production. ',
-        reverse: false,
-      },
-      {
-        img: 'img/about-4.png',
-        title: 'Multimedia Agency:',
-        text: 'As an agency for a variety of\n' +
-            'mainstream media in Malaysia, we can meet the\n' +
-            'diverse advertising requirements of our customers. We\n' +
-            'put advertisements in appropriate media to get\n' +
-            'excellent result with minimum cost;\n',
-        reverse: true,
-      },
-      {
-        img: 'img/about-5.png',
-        title: 'Complete package:',
-        text: 'We can do everything for you,\n' +
-            'from designing the advertising concept, developing\n' +
-            'the content all the way to post-production. We promise\n' +
-            'to live up to your every expectation;',
-        reverse: false,
-      },
-    ]
+
   })
 }
 </script>

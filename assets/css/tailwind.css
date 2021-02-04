@@ -33,7 +33,7 @@ html, body {
 }
 
 @layer components {
-  .swiper-pagination-1, .swiper-pagination-2 {
+  .swiper-pagination-1, .swiper-pagination-2, .swiper-pagination-3  {
     position: absolute;
     display: flex !important;
     flex-direction: column;
@@ -41,7 +41,8 @@ html, body {
     right: 0 !important;
     transform: translateY(-50%) !important;
   }
-  .pagination-item {
+  .pagination-item , .swiper-pagination-bullet, .swiper-pagination-bullet-active-next-next {
+    transform: scale(1) !important;
     width: 40px !important;
     height: 40px !important;
     border-radius: 0 !important;

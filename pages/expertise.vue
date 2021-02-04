@@ -14,8 +14,10 @@
               :img="block.img"
               :title="block.title"
               :text="block.text"
-              :btn="block.btn"
+              btn=""
+              link=""
               :widthFull="block.widthFull"
+              textEnd=""
               :class="{
                 'xl:mb-32 lg:mb-24 sm:mb-20 mb-16': index !== blocks.length - 1
               }"
@@ -34,7 +36,6 @@
 
 <script>
 export default {
-name: "expertise",
   data: () => ({
     blocks: [
       {
@@ -47,7 +48,7 @@ name: "expertise",
             'A successful digital campaign ensures the highest ROI and augments your brand’s visibility over ' +
             'the internet. Through growth-obsessed digital marketing we put strategies in motion and connect ' +
             'you with the right people, at the right time. ',
-        widthFull: 'true',
+        widthFull: true,
       },
       {
         img: 'img/project-img.png',
@@ -55,7 +56,7 @@ name: "expertise",
         text: 'We also specialize in digital video productions, which include the following:<br> <br>  ' +
             'Creative content creation, video production, TV program production, TV commercial production, ' +
             'motion graphics (2D and 3D), corporate videos etc. ',
-        widthFull: 'true',
+        widthFull: true,
       },
       {
         img: 'img/project-img.png',
@@ -63,7 +64,7 @@ name: "expertise",
         text: 'Events are an essential platform to communicate a campaign’s message to the audience. We specialize ' +
             'in the enhancement of your events with unique and creative ideas. From large conferences to small brand ' +
             'activation campaigns, we strive to understand your needs and objectives. time. ',
-        widthFull: 'true',
+        widthFull: true,
 
       },
       {
@@ -73,7 +74,7 @@ name: "expertise",
             'engaging press releases, connecting you with journalists, and putting your business in front of ' +
             'people that matter. With the relevant industry expertise, know-how, strong relationships and great ' +
             'contacts, we can get your brand heard and amplify its messages to journalists, influencers and bloggers',
-        widthFull: 'true',
+        widthFull: true,
       },
 
     ],

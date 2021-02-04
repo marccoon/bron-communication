@@ -15,12 +15,12 @@
             </nuxt-link>
           </li>
           <li class="xl:ml-12 lg:ml-7">
-            <nuxt-link to="/project">
+            <nuxt-link to="/our-works">
               Our Works
             </nuxt-link>
           </li>
           <li class="xl:ml-12 lg:ml-7">
-            <nuxt-link to="/">
+            <nuxt-link to="/media-digital">
               Contact
             </nuxt-link>
           </li>

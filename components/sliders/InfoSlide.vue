@@ -11,7 +11,7 @@
     <div class="flex flex-col justify-center xl:w-full sm:w-1/2 w-full sm:mt-0 mt-2.5">
 
       <div class="transform xl:-translate-x-48 lg:-translate-x-28 sm:-translate-x-20 xl:pt-0 lg:pt-12 sm:pt-10
-      xl:mb-16 lg:mb-10 sm:mb-5 mb-2.5 sm:mt-0">
+                  xl:mb-16 lg:mb-10 sm:mb-5 mb-2.5 sm:mt-0 xl:w-216 lg:w-144 sm:w-96">
         <h3
             v-html="title"
             class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium"

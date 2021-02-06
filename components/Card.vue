@@ -30,7 +30,8 @@
                     'w-full': widthFull
                   }"
     >
-      <div class="transform xl:-translate-x-48 lg:-translate-x-40 sm:-translate-x-20 xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5">
+      <div class="transform xl:-translate-x-48 lg:-translate-x-40 sm:-translate-x-20
+                  xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5 xl:w-216 lg:w-144 sm:w-96">
         <div
             v-if="subtitle"
             class="flex items-center xl:mb-7 mb-2.5"

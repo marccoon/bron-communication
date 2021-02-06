@@ -11,22 +11,22 @@
         >
           <ul class="flex lg:flex-row flex-col text-menu xl:text-xl lg:text-base text-2xl lg:font-normal font-medium">
             <li class="xl:ml-12 lg:ml-7">
-              <nuxt-link to="/company">
+              <nuxt-link to="/company" class="hover:font-medium focus:text-menuActive">
                 Company
               </nuxt-link>
             </li>
             <li class="xl:ml-12 lg:ml-7 lg:mt-0 mt-5">
-              <nuxt-link to="/expertise">
+              <nuxt-link to="/expertise" class="hover:font-medium focus:text-menuActive">
                 Expertise
               </nuxt-link>
             </li>
             <li class="xl:ml-12 lg:ml-7 lg:mt-0 mt-5">
-              <nuxt-link to="/our-works">
+              <nuxt-link to="/our-works" class="hover:font-medium focus:text-menuActive">
                 Our Works
               </nuxt-link>
             </li>
             <li class="xl:ml-12 lg:ml-7 lg:mt-0 mt-5">
-              <nuxt-link to="/contact">
+              <nuxt-link to="/contact" class="hover:font-medium focus:text-menuActive">
                 Contact
               </nuxt-link>
             </li>

@@ -19,6 +19,8 @@ module.exports = {
       'link': '#786AF7',
       'btnLight': '#141414',
       'input': '#141414',
+      'menuActive': '#786AF7',
+      'paginationHover': '#786AF7',
     }),
     backgroundColor: theme => ({
       ...theme('colors'),
@@ -55,13 +57,19 @@ module.exports = {
         '154': '38.5rem',
         '172': '44rem',
       },
+      maxWidth: {
+        '216': '54rem',
+        '144': '36rem',
+      },
       padding: {
         '104': '26rem',
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      // font: ['hover'],
+    }
   },
   plugins: [],
 }

@@ -91,7 +91,17 @@ html, body {
     max-width: 1400px;
   }
 }
+.menu-container {
+  @apply px-2.5;
 
+@screen sm {
+  @apply px-0 mx-auto;
+  max-width: 640px;
+}
+@screen lg{
+  @apply max-w-full;
+}
+}
 .grid-block {
   @screen sm{
     @apply grid grid-cols-2 gap-x-8;

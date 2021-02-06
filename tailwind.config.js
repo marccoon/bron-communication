@@ -17,16 +17,31 @@ module.exports = {
       'btnColor': '#786AF7',
       'title-color': '#786AF7',
       'link': '#786AF7',
+      'btnLight': '#141414',
+      'input': '#141414',
     }),
     backgroundColor: theme => ({
       ...theme('colors'),
       'btn': '#786AF7',
+      'btnLight': '#fff',
       'btnFocus': '#5645F5',
       'body': '#141414',
       'menu': '#786AF7',
+      'form': '#786AF7',
       'footer': '#5645F5',
     }),
-
+    borderColor: theme => ({
+      ...theme('colors'),
+      'input': '#141414',
+      'secondary': '#ffed4a',
+      'danger': '#e3342f',
+    }),
+    placeholderColor: theme => ({
+      ...theme('colors'),
+      'primary': '#3490dc',
+      'secondary': '#ffed4a',
+      'input': '#141414',
+    }),
     extend: {
       height: {
         '88': '22rem',
@@ -35,6 +50,9 @@ module.exports = {
         '154': '38.5rem',
         '172': '44rem',
       },
+      padding: {
+        '104': '26rem',
+      }
     },
   },
   variants: {

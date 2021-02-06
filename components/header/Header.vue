@@ -1,12 +1,27 @@
 <template>
-  <div class="relative">
-    <header class="bg-transparent fixed z-20 left-0 right-0 pt-10">
+  <div class="">
+    <header class="bg-transparent fixed z-20 left-0 right-0 sm:pt-10 pt-7 ">
       <div class="container flex items-center justify-between">
-        <Logo />
-        <Menu />
-        <div class="lg:hidden ">
-          <img src="~assets/img/menu.svg" class="">
+        <Logo
+            class="z-10 sm:w-auto w-36"
+        />
+        <Menu
+            :active="menuOpen"
+            @closeMenu="menuOpen = false"
+        />
+        <div @click="menuOpen = !menuOpen"
+             class="w-16 h-10 flex justify-end items-center"
+        >
+          <button class="lg:hidden"
+               v-if="!menuOpen"
+          >
+            <img src="~assets/img/menu.svg" class="">
+          </button>
+          <button v-else class="z-50 relative">
+            <img src="~assets/img/menu-close.svg" class="">
+          </button>
         </div>
+
       </div>
     </header>
 
@@ -19,6 +34,14 @@ import Menu from "~/components/header/Menu";
 export default {
     name: "Header",
     components: {Logo},
+  data: () => ({
+    menuOpen: false
+  }),
+  watch: {
+    menuOpen () {
+      console.log(this.menuOpen)
+    }
+  },
 }
 </script>
 

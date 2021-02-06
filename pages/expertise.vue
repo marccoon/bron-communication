@@ -8,7 +8,10 @@
     <section class="section-padding">
       <div class="container">
         <h2 class="title text-title-color">One-stop Ad & Media Services for All of Your Advertising Needs</h2>
-        <div class="font-light xl:w-1/2 lg:w-2/3 xl:mb-16 lg:mb-12 sm:mb-10 mb-7 xl:text-2xl lg:text-xl sm:text-base text-xs">Bron Communications Sdn. Bhd. provides one-stop advertising and professional media services including:</div>
+        <div class="font-light xl:w-1/2 lg:w-2/3 xl:mb-16 lg:mb-12 sm:mb-10 mb-7
+                    xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158">
+          Bron Communications Sdn. Bhd. provides one-stop advertising and professional media services including:
+        </div>
         <Card v-for="(block, index) in blocks" :key="index"
               :ref="`block${index}`"
               :img="block.img"
@@ -39,7 +42,7 @@ export default {
   data: () => ({
     blocks: [
       {
-        img: 'img/project-img.png',
+        img: 'img/exp-1.png',
         title: 'Media & Digital Advertising',
         text: 'Various TV networks, multiple radio stations and countless other media platforms. Backed by marketing ' +
             'creativity and invaluable experience, we develop efficient strategic campaigns to gain maximum impact ' +
@@ -51,7 +54,7 @@ export default {
         widthFull: true,
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/exp-2.png',
         title: 'Video Production',
         text: 'We also specialize in digital video productions, which include the following:<br> <br>  ' +
             'Creative content creation, video production, TV program production, TV commercial production, ' +
@@ -59,7 +62,7 @@ export default {
         widthFull: true,
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/exp-3.png',
         title: 'Event Management',
         text: 'Events are an essential platform to communicate a campaign’s message to the audience. We specialize ' +
             'in the enhancement of your events with unique and creative ideas. From large conferences to small brand ' +
@@ -68,7 +71,7 @@ export default {
 
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/exp-4.png',
         title: 'PR (Public Relation)',
         text: 'Get the media coverage your company deserve! We help to make it happen by guiding you through ' +
             'engaging press releases, connecting you with journalists, and putting your business in front of ' +

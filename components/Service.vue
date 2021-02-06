@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-red-200 ">
+  <div class="">
     <div class="flex sm:items-center items-start sm:flex-row flex-col">
       <img
           :src="img"
@@ -10,7 +10,8 @@
     </div>
       <p
           v-html="text"
-          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-8 lg:mt-5 sm:mt-5 mt-2.5"
+          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-8 lg:mt-5 sm:mt-5 mt-2.5
+                  xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
       ></p>
   </div>
 </template>

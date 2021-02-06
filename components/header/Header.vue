@@ -10,11 +10,9 @@
             @closeMenu="menuOpen = false"
         />
         <div @click="menuOpen = !menuOpen"
-             class="w-16 h-10 flex justify-end items-center"
+             class="lg:hidden w-16 h-10 flex justify-end items-center"
         >
-          <button class="lg:hidden"
-               v-if="!menuOpen"
-          >
+          <button v-if="!menuOpen">
             <img src="~assets/img/menu.svg" class="">
           </button>
           <button v-else class="z-50 relative">

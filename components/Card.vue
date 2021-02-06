@@ -51,7 +51,7 @@
       >
         <p
             v-html="text"
-            class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs leading-normal"
+            class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
         ></p>
         <Button
             :btn="btn"

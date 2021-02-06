@@ -20,7 +20,7 @@
       </div>
         <p
             v-html="text"
-            class="font-light xl:w-3/5 lg:w-3/4 sm:w-5/6 xl:text-2xl lg:text-xl sm:text-base text-xs leading-normal"
+            class="font-light xl:w-3/5 lg:w-3/4 sm:w-5/6 xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
         ></p>
     </div>
   </div>

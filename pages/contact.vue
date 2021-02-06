@@ -6,7 +6,7 @@
       </div>
     </div>
     <section class="section-padding">
-      <div class="container xl:flex xl:flex-col xl:flex-wrap xl:justify-between xl:items-baseline xl:h-128 border border-red-200">
+      <div class="container xl:flex xl:flex-col xl:flex-wrap xl:justify-between xl:items-baseline xl:h-128">
         <div class="xl:w-1/2 xl:pr-5 xl:order-1">
           <div class="xl:text-xl lg:text-base text-xs xl:max-w-lg lg:max-w-none max-w-xs lg:pr-0 sm:pr-10  lg:mt-0 mt-10">
               <a class="block">hello@broncommunications.com</a>

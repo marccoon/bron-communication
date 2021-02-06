@@ -27,14 +27,12 @@
     </section>
     <section class="section-padding">
       <div class="container xl:grid xl:grid-cols-2 xl:gap-x-10">
-<!--        <div class="">-->
-          <div>
-            <h2 class="title">Our team</h2>
-          </div>
-          <TeamSlider
-              :slides="teamSlides"
-          />
-<!--        </div>-->
+        <div>
+          <h2 class="title">Our team</h2>
+        </div>
+        <TeamSlider
+            :slides="teamSlides"
+        />
       </div>
     </section>
     <section class="section-padding ">
@@ -58,7 +56,7 @@
     <section class="section-padding">
       <div class="container">
         <TextImg
-          img="img/company-img-1.png"
+          img="img/company-img-2.png"
           text="Bron Communications Sdn. Bhd, a one-stop media advertising
                   industry by producing all sorts of advertisements that meet expected
                   marketing effects. <br><br>

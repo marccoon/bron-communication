@@ -19,7 +19,7 @@
           link=""
         />
         <div class="xl:mt-28 lg:mt-24 sm:mt-20 mt-16">
-          <p class="font-light w-1/2 xl:text-2xl sm:text-base text-xs">
+          <p class="font-light w-1/2 xl:text-2xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158">
             A successful digital campaign ensures the highest ROI and augments your brand’s visibility over the
             internet. Through growth-obsessed digital marketing we put strategy in motion and connect you with the
             right people, at the right time.

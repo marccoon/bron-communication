@@ -39,7 +39,7 @@ export default {
   data: () => ({
     blocks: [
       {
-        img: 'img/project-img.png',
+        img: 'img/work-1.png',
         title: 'Project name',
         text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
@@ -48,7 +48,7 @@ export default {
         textEnd: false,
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/work-2.png',
         title: 'Project name',
         text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
@@ -57,7 +57,7 @@ export default {
         textEnd: true,
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/work-3.png',
         title: 'Project name',
         text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
@@ -66,7 +66,7 @@ export default {
         textEnd: false,
       },
       {
-        img: 'img/project-img.png',
+        img: 'img/work-4.png',
         title: 'Project name',
         text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
@@ -74,7 +74,15 @@ export default {
         link: '/',
         textEnd: true,
       },
-
+      {
+        img: 'img/work-5.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        btn: 'view project',
+        link: '/',
+        textEnd: false,
+      },
     ],
   })
 }

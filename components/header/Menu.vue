@@ -26,7 +26,7 @@
               </nuxt-link>
             </li>
             <li class="xl:ml-12 lg:ml-7 lg:mt-0 mt-5">
-              <nuxt-link to="/media-digital">
+              <nuxt-link to="/contact">
                 Contact
               </nuxt-link>
             </li>

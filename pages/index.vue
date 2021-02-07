@@ -65,7 +65,12 @@
 </template>
 
 <script>
+import ProjectSlider from "@/components/sliders/ProjectSlider";
+import TextImg from "@/components/TextImg";
+import Service from "@/components/Service";
+import Feedback from "@/components/Feedback";
 export default {
+  components: {ProjectSlider, TextImg, Service, Feedback},
   data: () => ({
     projectSlides: [
       {

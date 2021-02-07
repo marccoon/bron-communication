@@ -20,9 +20,9 @@
 </template>
 
 <script>
+import Feedback from "@/components/Feedback";
 export default {
-  name: "project",
-
+  components: {Feedback},
 }
 </script>
 

@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "AboutUs",
+  name: "AboutUsBlock",
   props: {
     img: {
       type: String,

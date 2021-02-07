@@ -24,8 +24,10 @@
 </template>
 
 <script>
+import SocialIcon from "@/components/SocialIcon";
 export default {
-name: "Footer"
+name: "Footer",
+  components: {SocialIcon}
 }
 </script>
 

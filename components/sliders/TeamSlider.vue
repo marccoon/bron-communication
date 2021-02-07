@@ -21,8 +21,9 @@
 </template>
 
 <script>
-
+import TeamSlide from "@/components/sliders/TeamSlide";
 export default {
+  components: {TeamSlide}
   name: "TeamSlider",
   props: {
     slides: {

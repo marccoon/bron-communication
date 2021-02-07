@@ -21,8 +21,9 @@
 </template>
 
 <script>
-
+import InfoSlide from "@/components/sliders/InfoSlide";
 export default {
+  components: {InfoSlide}
   name: "InfoSlider",
   props: {
     slides: {

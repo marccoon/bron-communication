@@ -43,9 +43,7 @@
 </template>
 
 <script>
-// import Button from "~/components/Button";
 export default {
-  // components: {Button},
   name: "Menu",
   props: {
     active: {

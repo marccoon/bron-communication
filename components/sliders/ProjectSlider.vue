@@ -23,8 +23,9 @@
 </template>
 
 <script>
-
+import ProjectSlide from "@/components/sliders/ProjectSlide";
 export default {
+  components: {ProjectSlide}
   name: "ProjectSlider",
   props: {
     slides: {

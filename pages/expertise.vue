@@ -38,7 +38,10 @@
 </template>
 
 <script>
+import Card from "@/components/Card";
+import Feedback from "@/components/Feedback";
 export default {
+  components: {Card, Feedback},
   data: () => ({
     blocks: [
       {

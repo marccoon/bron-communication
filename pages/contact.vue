@@ -35,9 +35,10 @@
 </template>
 
 <script>
+import SocialIcon from "@/components/SocialIcon";
+import Feedback from "@/components/Feedback";
 export default {
-  name: "contact",
-
+  components: {SocialIcon, Feedback},
 }
 </script>
 

@@ -55,7 +55,11 @@
 </template>
 
 <script>
+import Card from "@/components/Card";
+import InfoSlider from "@/components/sliders/InfoSlider";
+import Feedback from "@/components/Feedback";
 export default {
+  components: {Card, InfoSlider, Feedback},
   data: () => ({
     infoSlides: [
       {

@@ -99,7 +99,12 @@
 </template>
 
 <script>
+import TextImg from "@/components/TextImg";
+import TeamSlider from "@/components/sliders/TeamSlider";
+import AboutUsBlock from "@/components/AboutUsBlock";
+import Feedback from "@/components/Feedback";
 export default {
+  components: {TextImg, AboutUsBlock, TeamSlider, Feedback},
   name: "company",
   data: () => ({
     teamSlides: [

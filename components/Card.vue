@@ -1,5 +1,4 @@
 <template>
-<!--  <div class="flex" >-->
     <div class=""
          :class="{
             'grid sm:grid-cols-2 xl:gap-x-10 lg:gap-x-0 sm:gap-x-10': widthFull,
@@ -8,13 +7,11 @@
             'lg:justify-end': textEnd,
          }"
     >
-<!--    grid sm:grid-cols-2 xl:gap-x-10 lg:gap-x-0 sm:gap-x-10-->
     <div class=" "
          :class="{
             'w-full xl:pr-0 lg:pr-10': widthFull,
             'lg:w-1/2 xl:pr-5': !widthFull
-         }"
-    >
+         }">
       <img
           :src="img"
           class="w-full"
@@ -28,8 +25,7 @@
                     'xl:py-10 lg:pt-16 sm:pt-10': !subtitle,
                     'xl:w-1/3 lg:w-5/12 xl:pl-5 lg:pl-7': !widthFull,
                     'w-full': widthFull
-                  }"
-    >
+                  }">
       <div class="transform xl:-translate-x-48 lg:-translate-x-40 sm:-translate-x-20
                   xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5 xl:w-216 lg:w-144 sm:w-96">
         <div
@@ -66,7 +62,9 @@
 </template>
 
 <script>
+import Button from "@/components/Button";
 export default {
+  components: {Button}
   name: "Card",
   props: {
     img: {

@@ -28,10 +28,10 @@
 
 <script>
 import Logo from "@/components/Logo";
-import Menu from "~/components/header/Menu";
+import Menu from "@/components/header/Menu";
 export default {
     name: "Header",
-    components: {Logo},
+    components: {Logo, Menu},
   data: () => ({
     menuOpen: false
   }),

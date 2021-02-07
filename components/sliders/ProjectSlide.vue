@@ -39,7 +39,9 @@
 </template>
 
 <script>
+import Button from "@/components/Button";
 export default {
+  components: {Button}
   name: "ProjectSlide",
   props: {
     img: {

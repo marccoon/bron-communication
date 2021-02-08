@@ -14,23 +14,25 @@ module.exports = {
     textColor: theme => ({
       ...theme('colors'),
       'btn': '#fff',
-      'btnColor': '#786AF7',
+      'btn-color': '#786AF7',
       'title-color': '#786AF7',
       'link': '#786AF7',
-      'btnLight': '#141414',
+      'btn-light': '#141414',
       'input': '#141414',
-      'menuActive': '#786AF7',
+      'menu-active': '#786AF7',
       'paginationHover': '#786AF7',
     }),
     backgroundColor: theme => ({
       ...theme('colors'),
       'btn': '#786AF7',
-      'btnLight': '#fff',
-      'btnFocus': '#5645F5',
+      'btn-light': '#fff',
+      'btn-focus': '#5645F5',
       'body': '#141414',
       'menu': '#786AF7',
       'form': '#786AF7',
       'footer': '#5645F5',
+      'modal': 'rgba(0, 0, 0, .3)',
+      'form-btn-hover': '#DDDDDD'
     }),
     borderColor: theme => ({
       ...theme('colors'),
@@ -66,10 +68,6 @@ module.exports = {
       }
     },
   },
-  variants: {
-    extend: {
-      // font: ['hover'],
-    }
-  },
+  variants: {},
   plugins: [],
 }

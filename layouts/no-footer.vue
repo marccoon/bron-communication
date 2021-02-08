@@ -1,15 +1,14 @@
 <template>
   <div>
-    <Header  />
+    <Header />
 
     <Nuxt />
-
   </div>
 </template>
 
 <script>
-import Header from "~/components/header/Header";
+import Header from "~/components/header/Header"
 export default {
-  components: { Header }
+  components: { Header },
 }
 </script>

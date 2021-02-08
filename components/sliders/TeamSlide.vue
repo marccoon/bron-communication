@@ -1,6 +1,6 @@
 <template>
-  <div class="xl:w-3/4 w-full xl:mx-0 mx-auto ">
-    <div class="xl:w-full lg:w-3/4 sm:w-4/5 w-5/6">
+  <div class="xl:mx-0 mx-auto w-full">
+    <div class="w-full">
       <img
           :src="img"
           class="w-full object-cover"

@@ -3,7 +3,8 @@
     <Swiper
         :options="sliderOptions"
         ref="slider"
-        class="sm:h-154"
+        class="w-10/12"
+        style="margin-left: 0;"
     >
       <SwiperSlide  v-for="(slide, index) in slides" :key="index"
                     :ref="`slide${index}`"
@@ -15,7 +16,7 @@
         />
       </SwiperSlide>
     </Swiper>
-    <div class="swiper-pagination-2" slot="pagination">
+    <div class="swiper-pagination-2 z-10" slot="pagination">
     </div>
   </div>
 </template>
@@ -23,7 +24,7 @@
 <script>
 import TeamSlide from "@/components/sliders/TeamSlide";
 export default {
-  components: {TeamSlide}
+  components: {TeamSlide},
   name: "TeamSlider",
   props: {
     slides: {
@@ -33,12 +34,11 @@ export default {
   },
   data: () => ({
     sliderOptions: {
-      // direction: 'ho',
-      breakpoints: {
-        660: {
-          direction: 'vertical',
-        },
-      },
+      spaceBetween: 100,
+      autoHeight: true,
+      speed: 1000,
+      keyboard: true,
+      loop: true,
       pagination: {
         el: '.swiper-pagination-2',
         clickable: true,
@@ -49,10 +49,5 @@ export default {
       },
     },
   }),
-
 }
 </script>
-
-<style >
-
-</style>

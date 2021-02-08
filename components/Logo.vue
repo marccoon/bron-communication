@@ -1,12 +1,27 @@
 <template>
   <nuxt-link to="/">
-    <img src="~assets/img/logo.svg" alt="" class="">
+    <img
+      :class="{ hidden: active }"
+      src="~assets/img/logo.svg"
+      alt="logo"
+    >
+    <img
+      :class="{ hidden: !active }"
+      src="~assets/img/logo-active.svg"
+      alt="logo"
+    >
   </nuxt-link>
 </template>
 
 <script>
 export default {
-  name: "Logo"
+  name: "Logo",
+  props: {
+    active: {
+      type: Boolean,
+      required: false
+    }
+  }
 }
 </script>
 

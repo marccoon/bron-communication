@@ -34,9 +34,9 @@
       </div>
     </section>
     <section class="section-padding ">
-      <div class="container xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto ">
+      <div ref="scrollBlock" class="container xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto ">
         <div>
-          <h2 class="title">Our Services</h2>
+          <h2 class="title transition-transform duration-100 top-32" ref="dynamicTitle">Our Services</h2>
         </div>
         <div>
           <Service v-for="(service, index) in services" :key="index"
@@ -59,9 +59,7 @@
         />
       </div>
     </section>
-
   </div>
-
 </template>
 
 <script>
@@ -72,12 +70,22 @@ import Feedback from "@/components/Feedback";
 export default {
   components: {ProjectSlider, TextImg, Service, Feedback},
   data: () => ({
+    isFixTitle: false,
+    titlePosition: '',
+    scrollBlockHeight: '',
+    scrollBlockPosition: '',
     projectSlides: [
       {
         img: 'img/project-img.png',
         title: 'Project name',
         text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
-              ' we’d love converse with aspiring brands and individuals lets collaborate!',
+              ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+      ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+      'we’d love converse with aspiring brands and individuals lets collaborate! 2\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n',
         btn: 'view project',
         link:'/',
         subtitle: true,
@@ -85,8 +93,96 @@ export default {
       {
         img: 'img/project-img.png',
         title: 'Project name',
-        text: 'we’d love converse with aspiring brands and individuals lets collaborate! <br>\n' +
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate! 2\n',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
             ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!' +
+            'we’d love converse with aspiring brands and individuals lets collaborate!\n' +
+            ' we’d love converse with aspiring brands and individuals lets collaborate!',
+        btn: 'view project',
+        link:'/',
+        subtitle: true,
+      },
+      {
+        img: 'img/project-img.png',
+        title: 'Project name',
+        text: 'we’d love converse with aspiring brands and individuals lets collaborate! <br>\n',
         btn: 'view project',
         link:'/',
         subtitle: true,
@@ -201,10 +297,41 @@ export default {
         reverse: false,
       },
     ]
-  })
+  }),
+  mounted() {
+    this.titlePosition = this.$refs.dynamicTitle.offsetTop
+    this.scrollBlock = this.$refs.scrollBlock.scrollHeight
+    if (window.innerWidth >= 1536) {
+      this.isFixTitle = true
+    }
+    window.addEventListener('scroll', this.changeTitlePosition)
+    window.addEventListener('resize', this.windowResize)
+  },
+  methods: {
+    changeTitlePosition () {
+      if (
+          self.scrollY > this.titlePosition - 84
+          && self.scrollY < this.scrollBlock + this.titlePosition - 200
+          && this.isFixTitle
+      )
+        this.$refs.dynamicTitle.style.position = 'fixed'
+      else
+        this.$refs.dynamicTitle.style.position = 'static'
+    },
+    windowResize () {
+      if (window.innerWidth >= 1536) {
+        this.isFixTitle = true
+        this.titlePosition = this.$refs.dynamicTitle.offsetTop
+        this.scrollBlock = this.$refs.scrollBlock.scrollHeight
+      } else {
+        this.isFixTitle = false
+      }
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.changeTitlePosition)
+    window.removeEventListener('resize', this.windowResize)
+  }
 }
 </script>
 
-<style>
-
-</style>

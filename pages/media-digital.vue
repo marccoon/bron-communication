@@ -33,15 +33,17 @@
         <h2 class="title">Media & Digital Advertising Services</h2>
         <InfoSlider
             :slides="infoSlides"
+            idx="123"
         />
       </div>
     </section>
     <section class="section-padding">
       <div class="container">
         <h2 class="title">Our Approach</h2>
-<!--        <InfoSlider-->
-<!--            :slides="infoSlides"-->
-<!--        />-->
+        <InfoSlider
+            :slides="infoSlides"
+            idx="2"
+        />
       </div>
     </section>
     <section class="section-padding">

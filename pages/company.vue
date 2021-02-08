@@ -20,8 +20,6 @@
                   production to improve your sales performance and create overnight
                   success for your brand, we are here to give you delightful surprises
                   exceeding your expectations!"
-          linkName=""
-          link=""
         />
       </div>
     </section>
@@ -126,7 +124,7 @@ export default {
     ],
     aboutUs: [
       {
-        img: 'img/about-1.png',
+        img: 'img/about-1.svg',
         title: 'Rich experience:',
         text: 'Our team have accumulated rich\n' +
             'practical experience for many years, and can lead the\n' +
@@ -134,7 +132,7 @@ export default {
         reverse: false,
       },
       {
-        img: 'img/about-2.png',
+        img: 'img/about-2.svg',
         title: 'Professional team:',
         text: 'We have our own dedicated\n' +
             'advertising and video production team, consisting of\n' +
@@ -143,7 +141,7 @@ export default {
         reverse: true,
       },
       {
-        img: 'img/about-3.png',
+        img: 'img/about-3.svg',
         title: 'Well-equipped production:',
         text: 'High-quality advertising\n' +
             'and video production requires sophisticated\n' +
@@ -153,7 +151,7 @@ export default {
         reverse: false,
       },
       {
-        img: 'img/about-4.png',
+        img: 'img/about-4.svg',
         title: 'Multimedia Agency:',
         text: 'As an agency for a variety of\n' +
             'mainstream media in Malaysia, we can meet the\n' +
@@ -163,7 +161,7 @@ export default {
         reverse: true,
       },
       {
-        img: 'img/about-5.png',
+        img: 'img/about-5.svg',
         title: 'Complete package:',
         text: 'We can do everything for you,\n' +
             'from designing the advertising concept, developing\n' +

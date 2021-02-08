@@ -5,7 +5,6 @@
           'sm:grid-cols-2 grid-cols-1 sm:gap-x-10': !imgFull,
         }"
   >
-
     <img
         :src="img"
         alt=""
@@ -26,14 +25,17 @@
           class="leading-normal font-light xl:text-2xl lg:text-xl sm:text-base text-xs
                   xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
           v-html="text"></p>
-      <n-link :to="link" tag="button" class="text-link underline transition-all duration-150
+      <n-link v-if="link" :to="link" tag="button" class="text-link underline transition-all duration-150
               xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
         ">
         {{linkName}}
       </n-link>
+      <button v-else class="text-link underline transition-all duration-150
+              xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
+        ">
+        {{linkName}}
+      </button>
     </div>
-
-
   </div>
 </template>
 
@@ -52,12 +54,10 @@ export default {
     linkName: {
       type: String,
       required: false,
-      default: false,
     },
     link: {
       type: String,
       required: false,
-      default: false,
     },
     reverse: {
       type: Boolean,

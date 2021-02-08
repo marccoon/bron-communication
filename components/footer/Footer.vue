@@ -27,7 +27,7 @@
 import SocialIcon from "@/components/SocialIcon";
 export default {
 name: "Footer",
-  components: {SocialIcon}
+  components: {SocialIcon},
 }
 </script>
 

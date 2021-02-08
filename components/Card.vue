@@ -64,7 +64,7 @@
 <script>
 import Button from "@/components/Button";
 export default {
-  components: {Button}
+  components: {Button},
   name: "Card",
   props: {
     img: {

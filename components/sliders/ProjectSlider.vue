@@ -3,10 +3,12 @@
     <Swiper
         :options="sliderOptions"
         ref="slider"
-        class="xl:h-172 lg:h-104 sm:h-72"
+        class="w-10/12"
+        style="margin-left: 0 !important;"
     >
-      <SwiperSlide  v-for="(slide, index) in slides" :key="index"
-                   :ref="`slide${index}`"
+      <SwiperSlide
+          v-for="(slide, index) in slides" :key="index"
+          :ref="`slide${index}`"
       >
         <ProjectSlide
             :img="slide.img"
@@ -17,15 +19,14 @@
         />
       </SwiperSlide>
     </Swiper>
-        <div class="swiper-pagination-1" slot="pagination">
-        </div>
+    <div class="swiper-pagination-1 z-10" slot="pagination"></div>
   </div>
 </template>
 
 <script>
 import ProjectSlide from "@/components/sliders/ProjectSlide";
 export default {
-  components: {ProjectSlide}
+  components: {ProjectSlide},
   name: "ProjectSlider",
   props: {
     slides: {
@@ -35,26 +36,19 @@ export default {
   },
   data: () => ({
     sliderOptions: {
-      // direction: 'ho',
-      breakpoints: {
-        660: {
-          direction: 'vertical',
-        },
-      },
+      spaceBetween: 100,
+      autoHeight: true,
+      speed: 1000,
+      keyboard: true,
+      loop: true,
       pagination: {
         el: '.swiper-pagination-1',
         clickable: true,
-        renderBullet: function (index, className) {
+        renderBullet:  (index, className) => {
           return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
         },
-
       },
     },
   }),
-
 }
 </script>
-
-<style >
-
-</style>

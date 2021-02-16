@@ -1,18 +1,23 @@
 <template>
-  <div class="">
+  <div>
     <section class="w-full min-h-screen flex items-center relative">
-
       <div class="container">
-        <h1 class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto">
+        <h1 class="main-title start-animate-position relative xl:w-3/4 lg:w-11/12 z-10 mx-auto"
+            v-scroll="scrollHandler"
+            ref="firstBlock"
+        >
           We Offer You Pleasant Surprises through Our Ads & Videos
         </h1>
-        <img src="~assets/img/homepage-bg.png" class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0">
+        <img
+            src="~assets/img/homepage-bg.png"
+            class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0"
+        >
       </div>
     </section>
 
     <section class="xl:mt-32 lg:mt-24 sm:mt-20 mt-12 section-padding ">
       <div class="container">
-        <h2 class="title">Our Works</h2>
+        <h2 class="title start-animate-position" v-scroll="scrollHandler">Our Works</h2>
         <ProjectSlider
             :slides="projectSlides"
         />
@@ -20,7 +25,7 @@
     </section>
     <section class="section-padding ">
       <div class="container">
-        <h2 class="title">Make Your Brand a Renowned Star Brand in&nbsp;Mainstream Media</h2>
+        <h2 class="title start-animate-position" v-scroll="scrollHandler">Make Your Brand a Renowned Star Brand in&nbsp;Mainstream Media</h2>
         <TextImg
             img="img/homepage-img-1.png"
             text="Working in a large-scale media organization has empowered us to establish relationships with
@@ -36,7 +41,14 @@
     <section class="section-padding ">
       <div ref="scrollBlock" class="container xl:grid xl:grid-cols-2 xl:gap-x-10 mx-auto ">
         <div>
-          <h2 class="title transition-transform duration-100 top-32" ref="dynamicTitle">Our Services</h2>
+          <div ref="dynamicTitle" class="top-32"  v-scroll="fixTitle">
+            <h2
+                class="title  start-animate-position"
+                v-scroll="scrollHandler"
+            >
+              Our Services
+            </h2>
+          </div>
         </div>
         <div>
           <Service v-for="(service, index) in services" :key="index"
@@ -299,37 +311,33 @@ export default {
     ]
   }),
   mounted() {
-    this.titlePosition = this.$refs.dynamicTitle.offsetTop
-    this.scrollBlock = this.$refs.scrollBlock.scrollHeight
-    if (window.innerWidth >= 1536) {
-      this.isFixTitle = true
-    }
-    window.addEventListener('scroll', this.changeTitlePosition)
+    this.windowResize()
+    this.$refs.firstBlock.classList.add('animate')
     window.addEventListener('resize', this.windowResize)
   },
   methods: {
-    changeTitlePosition () {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 700 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    },
+    fixTitle (evt, el) {
       if (
-          self.scrollY > this.titlePosition - 84
-          && self.scrollY < this.scrollBlock + this.titlePosition - 200
+          this.$refs.scrollBlock.getBoundingClientRect().top < 100
+          && this.$refs.scrollBlock.getBoundingClientRect().bottom > 200
           && this.isFixTitle
-      )
-        this.$refs.dynamicTitle.style.position = 'fixed'
-      else
-        this.$refs.dynamicTitle.style.position = 'static'
+      ) {
+        el.style.position = 'fixed'
+      } else {
+        el.style.position = 'static'
+      }
     },
     windowResize () {
-      if (window.innerWidth >= 1536) {
-        this.isFixTitle = true
-        this.titlePosition = this.$refs.dynamicTitle.offsetTop
-        this.scrollBlock = this.$refs.scrollBlock.scrollHeight
-      } else {
-        this.isFixTitle = false
-      }
+      console.log(window.innerWidth >= 1536)
+      this.isFixTitle = window.innerWidth >= 1536
     }
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.changeTitlePosition)
     window.removeEventListener('resize', this.windowResize)
   }
 }

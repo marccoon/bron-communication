@@ -20,7 +20,6 @@
           <img src="~assets/img/menu-close.svg" alt="close menu">
         </div>
 
-
         <h4 class="font-light sm:text-2xl text-xl sm:text-left text-center">We will be glad to cooperate</h4>
 
         <div class="sm:mt-10 mt-5 flex flex-col">
@@ -45,7 +44,7 @@
                   'border-white': name.length,
                   'border-input': !name.length
                 }"
-            >
+            />
           </div>
 
           <div class="relative w-full mb-4">
@@ -115,7 +114,6 @@ export default {
   },
   watch: {
     active () {
-      console.log(this.active)
       this.active
           ? document.body.classList.add('overflow-hidden')
           : document.body.classList.remove('overflow-hidden')

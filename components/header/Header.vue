@@ -1,12 +1,17 @@
 <template>
   <header
-      class="transition-all duration-200 fixed z-20 left-0 right-0"
+      class="transition-all transform
+        duration-200 fixed z-20 left-0 right-0"
       :class="{
         'sm:py-10 py-7 bg-transparent': !active || menuOpen,
-        'py-3 bg-body': active && !menuOpen
-    }"
+        'py-3 bg-body': active && !menuOpen,
+      }"
+      v-scroll="scrollHandler"
   >
-    <div class="container flex items-center justify-between">
+    <div
+        ref="header"
+        class="container flex items-center justify-between start-animate-position"
+    >
       <Logo
           class="z-10 sm:w-auto w-36"
           :active="active"
@@ -45,10 +50,13 @@ export default {
     menuOpen: false,
     active: false,
   }),
-  mounted() {
-    window.addEventListener('scroll', e => {
-      self.scrollY > 50 ? this.active = true : this.active = false
-    })
+  mounted () {
+    this.$refs.header.classList.add('animate')
   },
+  methods: {
+    scrollHandler (evt, el) {
+      self.scrollY > 50 ? this.active = true : this.active = false
+    }
+  }
 }
 </script>

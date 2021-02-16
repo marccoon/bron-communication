@@ -54,13 +54,13 @@
             Contact
           </n-link>
         </ul>
-
       </menu>
+
       <a
           href="tel: +(60)12 977 7739"
           class="w-max lg:bg-btn bg-btn-light lg:text-btn text-btn-light
            text-xl py-1.5 xl:px-16 px-10 xl:ml-24 lg:ml-7 lg:mt-0 mt-10
-           w-auto transition-all duration-150">
+           w-auto transition-all duration-150 transform hover:scale-105 active:bg-btn-focus">
         Call us
       </a>
     </div>

@@ -1,5 +1,9 @@
 <template>
-  <div class="lg:py-20 sm:py-16 pt-10 pb-12 bg-footer">
+  <div
+    class="bg-footer start-animate-position lg:py-20 sm:py-16 pt-10 pb-12"
+    v-scroll="scrollHandler"
+    ref="footer"
+  >
     <div class="container flex justify-between items-start lg:flex-row flex-col-reverse">
       <div class="lg:text-xl sm:text-base text-xs lg:max-w-sm lg:w-auto sm:w-3/5 lg:mt-0 mt-10">
         <div class="">
@@ -28,9 +32,12 @@ import SocialIcon from "@/components/SocialIcon";
 export default {
 name: "Footer",
   components: {SocialIcon},
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top <= self.innerHeight + 100) {
+        el.classList.add('animate')
+      }
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

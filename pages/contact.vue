@@ -43,7 +43,3 @@ export default {
   layout: 'no-footer'
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,13 +1,21 @@
 <template>
   <div>
-    <n-link :to="link" v-if="link" tag="button" class="bg-btn w-full flex justify-center items-center text-btn
-           xl:text-4xl lg:text-2xl text-xl xl:py-6 lg:py-2.5 sm:py-3.5 py-3 px-4 transition-all duration-150 focus:bg-btn-focus">
-      {{btn}}
+    <n-link
+        :to="link"
+        v-if="link"
+        tag="button"
+        class="bg-btn w-full flex justify-center items-center text-btn
+           xl:text-4xl lg:text-2xl text-xl xl:py-6 lg:py-2.5 sm:py-3.5
+           py-3 px-4 transition-all duration-150 transform hover:scale-105 active:bg-btn-focus">
+      {{ btn }}
       <img src="~assets/img/btn-icon.svg" class="lg:ml-5 ml-3 lg:w-auto w-6">
     </n-link>
-    <button v-else  class="bg-btn w-full flex justify-center items-center text-btn
-            xl:text-4xl lg:text-2xl text-xl xl:py-6 lg:py-2.5 sm:py-3.5 py-3  px-4 transition-all duration-150" >
-      {{btn}}
+    <button
+        v-else
+        class="bg-btn w-full flex justify-center items-center text-btn
+            xl:text-4xl lg:text-2xl text-xl xl:py-6 lg:py-2.5 sm:py-3.5
+             py-3  px-4 transition-all transform duration-150 hover:scale-105 active:bg-btn-focus">
+      {{ btn }}
       <img src="~assets/img/btn-icon.svg" class="lg:ml-5 ml-3 lg:w-auto w-6">
     </button>
   </div>

@@ -8,7 +8,8 @@
     <img
         :src="img"
         alt=""
-        class="w-full"
+        class="w-full start-animate-position-img"
+        v-scroll="scrollHandler"
         :class="{
           'order-2': reverse,
           'order-1': !reverse,
@@ -22,19 +23,24 @@
        }"
     >
       <p
-          class="leading-normal font-light xl:text-2xl lg:text-xl sm:text-base text-xs
-                  xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
+          v-scroll="scrollHandler"
+          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs start-animate-position"
           v-html="text"></p>
-      <n-link v-if="link" :to="link" tag="button" class="text-link underline transition-all duration-150
+      <div
+        class="start-animate-position"
+        v-scroll="scrollHandler"
+      >
+        <n-link v-if="link" :to="link" tag="button" class="text-link underline transition-all duration-150
               xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
         ">
-        {{linkName}}
-      </n-link>
-      <button v-else class="text-link underline transition-all duration-150
+          {{linkName}}
+        </n-link>
+        <button v-else class="text-link underline transition-all duration-150
               xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
         ">
-        {{linkName}}
-      </button>
+          {{linkName}}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -74,6 +80,13 @@ export default {
       required: false,
       default: false
     },
+  },
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 700 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
   }
 }
 </script>

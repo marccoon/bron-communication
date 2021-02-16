@@ -3,8 +3,9 @@
     <div class="xl:w-full lg:w-6/12 sm:w-5/12 w-4/5 xl:pr-0 lg:pr-10 sm:pr-7 hover:cursor-pointer">
       <img
           :src="img"
-          class="w-full "
+          class="w-full start-animate-position-img"
           alt=""
+          v-scroll="scrollHandler"
       >
     </div>
 
@@ -13,26 +14,32 @@
           class="xl:w-216 lg:w-144 sm:w-96 transform xl:-translate-x-48
            lg:-translate-x-28 sm:-translate-x-20 xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5"
       >
-        <div class="flex items-center xl:mb-3 mb-2.5">
+        <div
+          class="flex items-center xl:mb-3 mb-2.5 start-animate-position"
+          v-scroll="scrollHandler"
+        >
           <span class="uppercase xl:text-xl lg:text-base text-xs">portfolio category</span>
           <img src="~assets/img/btn-icon.svg" class="lg:w-auto w-7 lg:ml-5 ml-4">
         </div>
         <h3
             v-html="title"
-            class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium"
+            class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium start-animate-position"
+            v-scroll="scrollHandler"
         >
         </h3>
       </div>
 
       <p
           v-html="text"
-          class="font-light xl:text-2xl lg:text-xl sm:text-base text-md leading-158"
+          class="font-light xl:text-2xl lg:text-xl sm:text-base text-md leading-158 start-animate-position"
+          v-scroll="scrollHandler"
       ></p>
 
       <Button
           :btn="btn"
           :link="link"
-          class="w-full mt-5 self-end"
+          class="w-full mt-5 self-end start-animate-position"
+          v-scroll="scrollHandler"
       />
     </div>
   </div>
@@ -69,5 +76,12 @@ export default {
       default: false
     },
   },
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 700 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  }
 }
 </script>

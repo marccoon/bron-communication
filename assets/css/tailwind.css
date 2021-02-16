@@ -29,6 +29,7 @@
 html, body {
     font-family: "Roboto";
     font-weight: 300;
+    scroll-behavior: smooth;
     @apply bg-body text-white;
 }
 
@@ -45,7 +46,6 @@ html, body {
         left: auto !important;
         width: auto !important;
         right: 0 !important;
-        transform: translateY(-50%) !important;
     }
 
     .pagination-item, .swiper-pagination-bullet, .swiper-pagination-bullet-active-next-next {
@@ -150,19 +150,25 @@ html, body {
         @apply text-7xl font-bold mb-20 leading-130;
     }
 }
+
 .main-title {
-    @apply text-4xl font-bold leading-115;
+    font-size: 2.25rem;
+    @apply font-bold;
 
     @screen sm {
-        @apply text-6xl font-bold leading-115;
+        font-size: 3.75rem;
+        @apply font-bold;
     }
     @screen lg {
-        @apply text-7xl font-bold leading-115;
+        font-size: 4.5rem;
+        @apply font-bold;
     }
     @screen xl {
-        @apply text-8xl font-bold leading-115;
+        font-size: 6rem;
+        @apply font-bold;
     }
 }
+
 .section-padding {
     @apply py-12;
 
@@ -190,4 +196,31 @@ html, body {
     @screen xl {
         @apply pt-48 pb-36 ;
     }
+}
+
+.animate {
+    line-height: 1.2 !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translate(0) !important;
+}
+
+.start-animate-position {
+    @apply leading-loose transform opacity-0 transition-all delay-200 duration-700 translate-y-60;
+}
+
+.start-animate-position-img {
+    @apply leading-loose transform opacity-0 transition-all delay-200 duration-700 translate-y-60 scale-110;
+}
+
+.start-animate-position-left {
+    @apply leading-loose transform opacity-0 transition-all delay-200 duration-700 translate-y-60 -translate-x-60;
+}
+
+.start-animate-position-footer {
+    @apply  transform transition-all delay-200 duration-700 overflow-hidden
+}
+
+.swiper-pagination-1.start-animate-position.animate, .swiper-pagination-2.start-animate-position.animate, [class*="swiper-pagination-3"].start-animate-position.animate {
+    transform: translate(0, -50%) !important;
 }

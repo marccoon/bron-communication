@@ -19,7 +19,7 @@
         />
       </SwiperSlide>
     </Swiper>
-    <div class="swiper-pagination-1 z-10" slot="pagination"></div>
+    <div class="swiper-pagination-1 start-animate-position z-10" v-scroll="scrollHandlerPagination" slot="pagination"></div>
   </div>
 </template>
 
@@ -50,5 +50,17 @@ export default {
       },
     },
   }),
+  methods: {
+    scrollHandler (evt, el) {
+      if (el.getBoundingClientRect().top < 700 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    },
+    scrollHandlerPagination (evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  }
 }
 </script>

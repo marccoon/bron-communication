@@ -2,12 +2,17 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1 class="main-title">Company</h1>
+        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Company</h1>
       </div>
     </div>
     <section class="section-padding">
       <div class="container">
-        <h2 class="title text-title-color xl:w-4/5">We Offer You Pleasant Surprises through Our Ads & Videos</h2>
+        <h2
+            class="title text-title-color xl:w-4/5 start-animate-position"
+            v-scroll="scrollHandler"
+        >
+          We Offer You Pleasant Surprises through Our Ads & Videos
+        </h2>
         <TextImg
           img="img/company-img-1.png"
           text="Bron Communications Sdn. Bhd, a one-stop media advertising
@@ -26,7 +31,7 @@
     <section class="section-padding">
       <div class="container xl:grid xl:grid-cols-2 xl:gap-x-10">
         <div>
-          <h2 class="title">Our team</h2>
+          <h2 class="title start-animate-position" v-scroll="scrollHandler">Our team</h2>
         </div>
         <TeamSlider
             :slides="teamSlides"
@@ -35,15 +40,21 @@
     </section>
     <section class="section-padding ">
       <div class="container">
-        <h2 class="title">About us</h2>
+        <h2
+          class="title start-animate-position"
+          v-scroll="scrollHandler"
+        >
+          About us
+        </h2>
         <div>
-          <AboutUsBlock v-for="(item, index) in aboutUs" :key="index"
-                       :ref="`slide${index}`"
-                       :img="item.img"
-                       :title="item.title"
-                       :text="item.text"
-                       :reverse="item.reverse"
-                      :class="{
+          <AboutUsBlock
+              v-for="(item, index) in aboutUs" :key="index"
+              :ref="`slide${index}`"
+              :img="item.img"
+              :title="item.title"
+              :text="item.text"
+              :reverse="item.reverse"
+              :class="{
                         'mb-0': (index === aboutUs.length - 1),
                         'xl:mb-28 sm:mb-16 mb-10': (index !== aboutUs.length - 1)
                       }"
@@ -74,15 +85,17 @@
     </section>
     <section class="section-padding">
       <div class="container">
-        <h2 class="title">Our collobrations</h2>
-        <div class="flex items-center justify-between">
-          <img :src="item" v-for="(item, index) in collobrations" :key="index"
-               :ref="`item${index}`"
-                class="xl:w-auto lg:w-1/5 w-1/3"
-               :class="{
-                 'lg:block hidden': index > 2
-               }"
+        <h2 class="title start-animate-position" v-scroll="scrollHandler">
+          Our collaborations
+        </h2>
+        <div class="flex items-center justify-between start-animate-position"   v-scroll="scrollHandler">
+          <Swiper
+            :options="sliderOptions"
           >
+            <SwiperSlide :key="index" v-for="(item, index) in collobrations">
+              <img :src="item" class="xl:w-auto max-w-full xl:mx-auto w-full">
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </section>
@@ -105,6 +118,28 @@ export default {
   components: {TextImg, AboutUsBlock, TeamSlider, Feedback},
   name: "company",
   data: () => ({
+    sliderOptions: {
+      spaceBetween: 10,
+      autoHeight: true,
+      speed: 1000,
+      keyboard: true,
+      loop: true,
+      slidesPerView: 3,
+      autoplay: true,
+      breakpoints: {
+        660: {
+          spaceBetween: 20,
+        },
+        1024: {
+          spaceBetween: 33,
+          slidesPerView: 4,
+        },
+        1536: {
+          spaceBetween: 40,
+          slidesPerView: 4,
+        }
+      }
+    },
     teamSlides: [
       {
         img: 'img/team-img.png',
@@ -176,10 +211,17 @@ export default {
       'img/col-3.svg',
       'img/col-4.svg',
     ],
-  })
+  }),
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

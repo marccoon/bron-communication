@@ -112,6 +112,7 @@ html, body {
 }
 
 .grid-block {
+
     @screen sm {
         @apply grid grid-cols-2 gap-x-8;
     }
@@ -152,20 +153,16 @@ html, body {
 }
 
 .main-title {
-    font-size: 2.25rem;
-    @apply font-bold;
+    @apply text-4xl font-bold leading-115;
 
     @screen sm {
-        font-size: 3.75rem;
-        @apply font-bold;
+        @apply text-6xl font-bold leading-115;
     }
     @screen lg {
-        font-size: 4.5rem;
-        @apply font-bold;
+        @apply text-7xl font-bold leading-115;
     }
     @screen xl {
-        font-size: 6rem;
-        @apply font-bold;
+        @apply text-8xl font-bold leading-115;
     }
 }
 
@@ -178,7 +175,6 @@ html, body {
     @screen lg {
         @apply py-24;
     }
-
     @screen xl {
         @apply py-32;
     }
@@ -199,14 +195,30 @@ html, body {
 }
 
 .animate {
-    line-height: 1.2 !important;
     opacity: 1 !important;
-    pointer-events: auto !important;
     transform: translate(0) !important;
 }
 
+@keyframes header {
+    from {
+        @apply transform translate-y-60;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        @apply transform translate-y-0;
+    }
+}
+
+.header-animation {
+    opacity: 0;
+    animation: header ease-in 700ms;
+    animation-fill-mode: forwards;
+    animation-delay: 2000ms;
+}
+
 .start-animate-position {
-    @apply leading-loose transform opacity-0 transition-all delay-200 duration-700 translate-y-60;
+    @apply transform opacity-0 transition-all delay-200 duration-700 translate-y-60;
 }
 
 .start-animate-position-img {

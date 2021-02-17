@@ -1,6 +1,6 @@
-export const state = {
+export const state = () => ({
     modal: false
-}
+})
 
 export const mutations =  {
     modal(state, val) {

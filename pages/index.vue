@@ -2,10 +2,7 @@
   <div>
     <section class="w-full min-h-screen flex items-center relative">
       <div class="container">
-        <h1 class="main-title start-animate-position relative xl:w-3/4 lg:w-11/12 z-10 mx-auto"
-            v-scroll="scrollHandler"
-            ref="firstBlock"
-        >
+        <h1 v-scroll="scrollHandler" class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto start-animate-position">
           We Offer You Pleasant Surprises through Our Ads & Videos
         </h1>
         <img
@@ -311,13 +308,14 @@ export default {
     ]
   }),
   mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
     this.windowResize()
-    this.$refs.firstBlock.classList.add('animate')
     window.addEventListener('resize', this.windowResize)
   },
   methods: {
     scrollHandler(evt, el) {
-      if (el.getBoundingClientRect().top < 700 && !el.classList.contains('animate')) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
         el.classList.add('animate')
       }
     },
@@ -333,7 +331,6 @@ export default {
       }
     },
     windowResize () {
-      console.log(window.innerWidth >= 1536)
       this.isFixTitle = window.innerWidth >= 1536
     }
   },

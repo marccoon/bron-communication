@@ -7,8 +7,8 @@
     <div class="container flex justify-between items-start lg:flex-row flex-col-reverse">
       <div class="lg:text-xl sm:text-base text-xs lg:max-w-sm lg:w-auto sm:w-3/5 lg:mt-0 mt-10">
         <div class="">
-          <a class="block">hello@broncommunications.com</a>
-          <a class="block">+(60)12 977 7739</a>
+          <a href="mailto: hello@broncommunications.com"  class="block">hello@broncommunications.com</a>
+          <a href="tel: +(60)12 977 7739" class="block">+(60)12 977 7739</a>
         </div>
 
         <div class="mt-10 ">
@@ -17,7 +17,7 @@
             Seksyen 14, Shah Alam, 40000, <br>
             Selangor Darul Ehsan, Malaysia
           </p>
-          <span class="font-medium underline block mt-2">View on map</span>
+          <n-link to="/contact" class="font-medium underline block mt-2">View on map</n-link>
         </div>
         <div class="text-xs mt-10 ">&copy; Bron Communication Sdn Bhd (1304961-T)</div>
       </div>

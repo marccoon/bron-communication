@@ -17,7 +17,7 @@
         />
       </SwiperSlide>
     </Swiper>
-    <div :class="'swiper-pagination-3' + idx" slot="pagination"></div>
+    <div class="start-animate-position" v-scroll="scrollHandlerPagination" :class="'swiper-pagination-3' + idx" slot="pagination"></div>
   </div>
 </template>
 
@@ -56,6 +56,18 @@ export default {
       },
     }
     this.load = true
+  },
+  methods: {
+    scrollHandler (evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    },
+    scrollHandlerPagination (evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
   }
 }
 </script>

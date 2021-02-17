@@ -1,5 +1,8 @@
 <template>
-  <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 flex justify-center sm:flex-row flex-col">
+  <div
+      v-scroll="scrollHandler"
+      class="start-animate-position xl:grid xl:grid-cols-2 xl:gap-x-10 flex justify-center sm:flex-row flex-col"
+  >
     <div
         class="xl:w-full w-1/3 sm:mx-0 mx-auto "
          :class="{
@@ -52,7 +55,14 @@ export default {
       type: Boolean,
       required: true,
     }
-  }
+  },
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
 }
 </script>
 

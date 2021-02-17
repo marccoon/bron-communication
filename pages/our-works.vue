@@ -2,7 +2,7 @@
   <div class="wrap-padding">
     <div class="">
       <div class="container">
-        <h1 class="main-title">Our Works</h1>
+        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Our Works</h1>
       </div>
     </div>
     <section class="section-padding">
@@ -86,10 +86,17 @@ export default {
         textEnd: false,
       },
     ],
-  })
+  }),
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,16 +1,16 @@
 <template>
   <div
       class="flex justify-center items-center fixed duration-200
-      left-0 right-0 top-0 bottom-0 bg-modal transition-all"
+      left-0 right-0 top-0 bottom-0 h-full bg-modal transition-all"
       @click.self="closeModal"
       :class="{
         'opacity-0 pointer-events-none': !active,
         'opacity-1': active
       }"
   >
-    <div class="container">
+    <div @click.self="closeModal" class="container m-0 flex justify-center">
       <form
-          class="bg-form mx-auto sm:px-16 px-2.5 sm:py-10 pt-16 pb-8 xl:w-1/2 lg:w-3/4 w-full relative"
+          class="bg-form  sm:px-16 px-2.5 sm:py-10 pt-16 pb-8 xl:w-1/2 lg:w-3/4 w-full relative"
           @submit.prevent="submitHandler"
       >
         <div
@@ -20,7 +20,9 @@
           <img src="~assets/img/menu-close.svg" alt="close menu">
         </div>
 
-        <h4 class="font-light sm:text-2xl text-xl sm:text-left text-center">We will be glad to cooperate</h4>
+        <h4 class="font-light sm:text-2xl text-xl sm:text-left text-center">
+          We will be glad to cooperate
+        </h4>
 
         <div class="sm:mt-10 mt-5 flex flex-col">
           <div class="relative w-full mb-4">

@@ -3,10 +3,22 @@
     <div class="w-full">
       <img
           :src="img"
-          class="w-full object-cover"
-          alt="">
-      <h4 class="title-block text-title-color lg:mt-5 mt-2.5">{{name}}</h4>
-      <div class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs mt-2.5">{{position}}</div>
+          class="w-full object-cover start-animate-position-img"
+          alt=""
+          v-scroll="scrollHandler"
+      >
+      <h4
+          class="title-block text-title-color lg:mt-5 mt-2.5 start-animate-position"
+          v-scroll="scrollHandler"
+      >
+        {{name}}
+      </h4>
+      <div
+          class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs mt-2.5 start-animate-position"
+          v-scroll="scrollHandler"
+      >
+        {{position}}
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +40,13 @@ name: "TeamSlide",
       type: String,
       required: true,
     },
+  },
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
   }
 }
 </script>

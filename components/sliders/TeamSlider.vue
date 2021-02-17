@@ -16,7 +16,7 @@
         />
       </SwiperSlide>
     </Swiper>
-    <div class="swiper-pagination-2 z-10" slot="pagination">
+    <div class="swiper-pagination-2 z-10 start-animate-position" v-scroll="scrollHandlerPagination" slot="pagination">
     </div>
   </div>
 </template>
@@ -45,9 +45,20 @@ export default {
         renderBullet: function (index, className) {
           return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
         },
-
       },
     },
   }),
+  methods: {
+    scrollHandler (evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    },
+    scrollHandlerPagination (evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  }
 }
 </script>

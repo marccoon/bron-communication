@@ -2,7 +2,7 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1 class="main-title">Media & Digital Advertising</h1>
+        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Media & Digital Advertising</h1>
       </div>
     </div>
     <section class="section-padding">
@@ -19,18 +19,26 @@
           link=""
         />
         <div class="xl:mt-28 lg:mt-24 sm:mt-20 mt-16">
-          <p class="font-light w-1/2 xl:text-2xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158">
+          <p
+              class="start-animate-position font-light w-1/2 xl:text-2xl sm:text-base text-xs
+              xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
+              v-scroll="scrollHandler"
+          >
             A successful digital campaign ensures the highest ROI and augments your brand’s visibility over the
             internet. Through growth-obsessed digital marketing we put strategy in motion and connect you with the
             right people, at the right time.
           </p>
-          <img src="~assets/img/media-digital-img-2.png" class="lg:mt-16 sm:mt-10 mt-5 w-full object-cover">
+          <img
+              v-scroll="scrollHandler"
+              src="~assets/img/media-digital-img-2.png"
+              class="start-animate-position lg:mt-16 sm:mt-10 mt-5 w-full object-cover"
+          >
         </div>
       </div>
     </section>
     <section class="section-padding">
       <div class="container">
-        <h2 class="title">Media & Digital Advertising Services</h2>
+        <h2 class="title start-animate-position" v-scroll="scrollHandler">Media & Digital Advertising Services</h2>
         <InfoSlider
             :slides="infoSlides"
             idx="123"
@@ -100,12 +108,17 @@ export default {
             'channel to find smart opportunities, and build brand growth tactics to help you become a market leader.',
       },
     ],
-
-
-  })
+  }),
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

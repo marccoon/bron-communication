@@ -1,7 +1,7 @@
 <template>
   <div
       class=" lg:bg-transparent bg-menu lg:relative
-       top-0 h-screen lg:h-auto absolute right-0 lg:left-0
+       top-0 h-screen lg:h-auto fixed right-0 lg:left-0
        transition-all duration-750"
       :class="{
         'left-0 sm:pt-36 pt-28': active,

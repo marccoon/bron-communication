@@ -1,21 +1,23 @@
 <template>
-    <div class=""
-         :class="{
+  <div
+       :class="{
             'grid sm:grid-cols-2 xl:gap-x-10 lg:gap-x-0 sm:gap-x-10': widthFull,
             'lg:flex grid sm:grid-cols-2 grid-cols-1 sm:gap-x-10 gap-x-0': !widthFull,
             'lg:justify-start': !textEnd,
             'lg:justify-end': textEnd,
          }"
-    >
-    <div class=" "
+  >
+    <div
          :class="{
             'w-full xl:pr-0 lg:pr-10': widthFull,
             'lg:w-1/2 xl:pr-5': !widthFull
          }">
       <img
           :src="img"
-          class="w-full"
-          alt="">
+          class="w-full start-animate-position-img"
+          alt=""
+          v-scroll="scrollHandler"
+      >
     </div>
 
     <div class="flex flex-col "
@@ -26,25 +28,33 @@
                     'xl:w-1/3 lg:w-5/12 xl:pl-5 lg:pl-7': !widthFull,
                     'w-full': widthFull
                   }">
-      <div class="transform xl:-translate-x-48 lg:-translate-x-40 sm:-translate-x-20
-                  xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5 xl:w-216 lg:w-144 sm:w-96">
+      <div class="start-animate-position" v-scroll="scrollHandler">
         <div
-            v-if="subtitle"
-            class="flex items-center xl:mb-7 mb-2.5"
+            class=" transform xl:-translate-x-48
+           lg:-translate-x-40 sm:-translate-x-20
+           xl:mb-16 lg:mb-10 mb-5 sm:mt-0 mt-2.5 xl:w-216 lg:w-144 sm:w-96"
         >
-          <span class="uppercase xl:text-xl lg:text-base text-xs">portfolio category</span>
-          <img src="~assets/img/btn-icon.svg" class="sm:w-auto w-5 ml-5">
+          <div
+              v-if="subtitle"
+              class="flex items-center xl:mb-7 mb-2.5"
+          >
+            <span class="uppercase xl:text-xl lg:text-base text-xs">portfolio category</span>
+            <img src="~assets/img/btn-icon.svg" class="sm:w-auto w-5 ml-5">
+          </div>
+          <h3
+              v-html="title"
+              class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium"
+          >
+          </h3>
         </div>
-        <h3
-            v-html="title"
-            class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium"
-        >
-        </h3>
       </div>
+
       <div
-        :class="{
+          class="start-animate-position"
+          :class="{
           'flex flex-col justify-between xl:h-88 lg:h-60 ': btn
         }"
+          v-scroll="scrollHandler"
       >
         <p
             v-html="text"
@@ -63,6 +73,7 @@
 
 <script>
 import Button from "@/components/Button";
+
 export default {
   components: {Button},
   name: "Card",
@@ -106,9 +117,16 @@ export default {
       default: false
     },
   },
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

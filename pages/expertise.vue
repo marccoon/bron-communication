@@ -2,14 +2,24 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1 class="main-title">Expertise</h1>
+        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Expertise</h1>
       </div>
     </div>
     <section class="section-padding">
       <div class="container">
-        <h2 class="title text-title-color">One-stop Ad & Media Services for All of Your Advertising Needs</h2>
-        <div class="font-light xl:w-1/2 lg:w-2/3 xl:mb-16 lg:mb-12 sm:mb-10 mb-7
-                    xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158">
+        <h2
+            class="title text-title-color start-animate-position"
+            v-scroll="scrollHandler"
+        >
+          One-stop Ad & Media Services for All of Your Advertising Needs
+        </h2>
+
+        <div
+            class="font-light xl:w-1/2 lg:w-2/3 xl:mb-16 lg:mb-12 sm:mb-10 mb-7
+                    xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158
+                     lg:leading-158 sm:leading-158 leading-158 start-animate-position"
+            v-scroll="scrollHandler"
+        >
           Bron Communications Sdn. Bhd. provides one-stop advertising and professional media services including:
         </div>
         <Card v-for="(block, index) in blocks" :key="index"
@@ -84,10 +94,17 @@ export default {
       },
 
     ],
-  })
+  }),
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,16 +1,16 @@
 <template>
   <div class="wrap-padding">
-    <div class="">
+    <div>
       <div class="container">
-        <h1 class="main-title">Contact</h1>
+        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Contact</h1>
       </div>
     </div>
-    <section class="section-padding">
+    <section class="section-padding start-animate-position" v-scroll="scrollHandler">
       <div class="container xl:flex xl:flex-col xl:flex-wrap xl:justify-between xl:items-baseline xl:h-128">
         <div class="xl:w-1/2 xl:pr-5 xl:order-1">
           <div class="xl:text-xl lg:text-base text-xs xl:max-w-lg lg:max-w-none max-w-xs lg:pr-0 sm:pr-10  lg:mt-0 mt-10">
-              <a class="block font-normal">hello@broncommunications.com</a>
-              <a class="block font-normal">+(60)12 977 7739</a>
+              <a href="mailto: hello@broncommunications.com" class="block font-normal">hello@broncommunications.com</a>
+              <a href="tel: +(60)12 977 7739" class="block font-normal">+(60)12 977 7739</a>
               <p class="mt-7 font-normal">
                 Level 16, 16-06 Plaza Azalea, Persiaran Bandaraya,
                 Seksyen 14, Shah Alam, 40000, <br>
@@ -27,8 +27,6 @@
         <Feedback
             class="xl:order-2 xl:mt-0 sm:mt-20 mt-16"
         />
-
-
       </div>
     </section>
   </div>
@@ -40,6 +38,17 @@ import Feedback from "@/components/Feedback"
 
 export default {
   components: {SocialIcon, Feedback},
-  layout: 'no-footer'
+  layout: 'no-footer',
+  methods: {
+    scrollHandler(evt, el) {
+      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+        el.classList.add('animate')
+      }
+    }
+  },
+  mounted() {
+    const event = new Event('scroll');
+    window.dispatchEvent(event);
+  }
 }
 </script>

@@ -88,7 +88,7 @@
         <h2 class="title start-animate-position" v-scroll="scrollHandler">
           Our collaborations
         </h2>
-        <div class="flex items-center justify-between start-animate-position"   v-scroll="scrollHandler">
+        <div class="flex items-center justify-between start-animate-position" v-scroll="scrollHandler">
           <Swiper
             :options="sliderOptions"
           >
@@ -225,7 +225,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -12,12 +12,16 @@
             'w-full xl:pr-0 lg:pr-10': widthFull,
             'lg:w-1/2 xl:pr-5': !widthFull
          }">
-      <img
-          :src="img"
-          class="w-full start-animate-position-img"
-          alt=""
+      <div
+          class="group overflow-hidden start-animate-position-img"
           v-scroll="scrollHandler"
-      >
+          >
+        <img
+            :src="img"
+            class="w-full transform transition duration-700 group-hover:scale-110"
+            alt=""
+        >
+      </div>
     </div>
 
     <div class="flex flex-col "

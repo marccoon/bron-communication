@@ -52,6 +52,9 @@ module.exports = {
         '130': '1.3',
         '158': '1.58',
       },
+      width: {
+        '115': '115%',
+      },
       height: {
         '88': '22rem',
         '104': '26.5rem',
@@ -71,6 +74,9 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ['active', 'hover'],
+      width: ['group-hover', 'hover'],
+      scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+      transitionDuration: ['hover', 'group-hover']
     }
   },
   plugins: [],

@@ -1,17 +1,18 @@
 <template>
   <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 flex flex-wrap">
-    <div class="xl:w-full xl:pr-0 lg:pr-10 sm:pr-7">
+    <div
+        class="xl:w-full xl:pr-0 lg:pr-10 sm:pr-7 group overflow-hidden
+        start-animate-position-img"
+        v-scroll="scrollHandler"
+    >
       <img
           :src="img"
-          class="w-full start-animate-position-img"
+          class="w-full transform transition duration-700 group-hover:scale-110"
           alt=""
-          v-scroll="scrollHandler"
       >
     </div>
 
-
     <div class="flex flex-col justify-center sm:mt-0 mt-2.5">
-
       <div class="transform xl:-translate-x-48  xl:pt-0 lg:pt-12 sm:pt-10
                   xl:mb-16 lg:mb-10 sm:mb-5 mb-2.5 sm:mt-0">
         <h3

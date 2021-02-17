@@ -28,11 +28,13 @@
             internet. Through growth-obsessed digital marketing we put strategy in motion and connect you with the
             right people, at the right time.
           </p>
-          <img
-              v-scroll="scrollHandler"
-              src="~assets/img/media-digital-img-2.png"
-              class="start-animate-position lg:mt-16 sm:mt-10 mt-5 w-full object-cover"
-          >
+
+          <div class="start-animate-position group overflow-hidden" v-scroll="scrollHandler">
+            <img
+                src="~assets/img/media-digital-img-2.png"
+                class="lg:mt-16 sm:mt-10 mt-5 w-full object-cover w-full transform transition duration-700 group-hover:scale-110"
+            >
+          </div>
         </div>
       </div>
     </section>

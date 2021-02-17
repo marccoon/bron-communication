@@ -1,12 +1,17 @@
 <template>
   <div class="xl:mx-0 mx-auto w-full">
     <div class="w-full">
-      <img
-          :src="img"
-          class="w-full object-cover start-animate-position-img"
-          alt=""
+      <div
+          class=" group overflow-hidden start-animate-position-img"
           v-scroll="scrollHandler"
       >
+        <img
+            :src="img"
+            class="w-full object-cover transform transition duration-700 group-hover:scale-110"
+            alt=""
+        >
+      </div>
+
       <h4
           class="title-block text-title-color lg:mt-5 mt-2.5 start-animate-position"
           v-scroll="scrollHandler"

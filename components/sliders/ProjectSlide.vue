@@ -1,11 +1,13 @@
 <template>
   <div class="xl:grid xl:grid-cols-2 xl:gap-x-10 flex flex-wrap">
-    <div class="xl:w-full lg:w-6/12 sm:w-5/12 w-4/5 xl:pr-0 lg:pr-10 sm:pr-7 hover:cursor-pointer">
+    <div
+        class="xl:w-full lg:w-6/12 sm:w-5/12 w-4/5 xl:pr-0 lg:pr-10 sm:pr-7 group overflow-hidden hover:cursor-pointer start-animate-position-img"
+        v-scroll="scrollHandler"
+    >
       <img
           :src="img"
-          class="w-full start-animate-position-img"
+          class="w-full transform transition duration-700 group-hover:scale-110"
           alt=""
-          v-scroll="scrollHandler"
       >
     </div>
 

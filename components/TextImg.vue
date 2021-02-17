@@ -5,16 +5,20 @@
           'sm:grid-cols-2 grid-cols-1 sm:gap-x-10': !imgFull,
         }"
   >
-    <img
-        :src="img"
-        alt=""
-        class="w-full start-animate-position-img"
+    <div
+        class="group overflow-hidden start-animate-position-img"
         v-scroll="scrollHandler"
         :class="{
-          'order-2': reverse,
-          'order-1': !reverse,
+            'order-2': reverse,
+            'order-1': !reverse,
         }"
     >
+      <img
+          :src="img"
+          alt=""
+          class="w-full transform transition duration-700 group-hover:scale-110"
+      >
+    </div>
     <div
         :class="{
           'order-1': reverse,
@@ -30,15 +34,16 @@
         class="start-animate-position"
         v-scroll="scrollHandler"
       >
-        <n-link v-if="link" :to="link" tag="button" class="text-link underline transition-all duration-150
-              xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
-        ">
-          {{linkName}}
+        <n-link v-if="link" :to="link" tag="button" class="text-link underline
+              xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5">
+          <span class="inline-block duration-700 transform hover:scale-110 transition-all">
+            {{linkName}}
+          </span>
         </n-link>
-        <button v-else class="text-link underline transition-all duration-150
+        <button v-else class="text-link underline transition-all duration-700 hover:scale-110
               xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5
         ">
-          {{linkName}}
+          {{ linkName }}
         </button>
       </div>
     </div>
@@ -90,7 +95,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

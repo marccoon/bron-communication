@@ -1,5 +1,6 @@
 <template>
   <div>
+    <resize-observer @notify="handleResize" />
     <section class="w-full min-h-screen flex items-center relative">
       <div class="container">
         <h1 v-scroll="scrollHandler" class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto start-animate-position">
@@ -305,13 +306,13 @@ export default {
             'to live up to your every expectation;',
         reverse: false,
       },
-    ]
+    ],
+    resizeVar: null
   }),
   mounted() {
-    const event = new Event('scroll');
-    window.dispatchEvent(event);
-    this.windowResize()
-    window.addEventListener('resize', this.windowResize)
+    const event = new Event('scroll')
+    window.dispatchEvent(event)
+    this.isFixTitle = window.innerWidth >= 1536
   },
   methods: {
     scrollHandler(evt, el) {
@@ -321,7 +322,8 @@ export default {
     },
     fixTitle (evt, el) {
       if (
-          this.$refs.scrollBlock.getBoundingClientRect().top < 100
+          this.$refs.scrollBlock
+          && this.$refs.scrollBlock.getBoundingClientRect().top < 100
           && this.$refs.scrollBlock.getBoundingClientRect().bottom > 200
           && this.isFixTitle
       ) {
@@ -330,13 +332,10 @@ export default {
         el.style.position = 'static'
       }
     },
-    windowResize () {
-      this.isFixTitle = window.innerWidth >= 1536
+    handleResize ({ width, height }) {
+      this.isFixTitle = width >= 1536
     }
   },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.windowResize)
-  }
 }
 </script>
 

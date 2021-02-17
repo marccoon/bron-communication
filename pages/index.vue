@@ -313,7 +313,6 @@ export default {
     const event = new Event('scroll')
     window.dispatchEvent(event)
     this.isFixTitle = window.innerWidth >= 1536
-    console.log( self.innerHeight * 1.1)
   },
   methods: {
     scrollHandler(evt, el) {

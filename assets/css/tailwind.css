@@ -37,48 +37,46 @@ html, body {
     outline: none !important;
 }
 
-@layer components {
-    .swiper-pagination-1, .swiper-pagination-2, [class*="swiper-pagination-3"]  {
-        position: absolute;
-        display: flex !important;
-        flex-direction: column;
-        top: 50% !important;
-        left: auto !important;
-        width: auto !important;
-        right: 0 !important;
-    }
+.swiper-pagination-1, .swiper-pagination-2, [class*="swiper-pagination-3"]  {
+    position: absolute;
+    display: flex !important;
+    flex-direction: column;
+    top: 50% !important;
+    left: auto !important;
+    width: auto !important;
+    right: 0 !important;
+}
 
-    .pagination-item, .swiper-pagination-bullet, .swiper-pagination-bullet-active-next-next {
-        transform: scale(1) !important;
-        width: 40px !important;
-        height: 40px !important;
-        border-radius: 0 !important;
-        background-color: transparent !important;
-        margin: 2px 0;
-        color: #ffffff !important;
-        opacity: 1 !important;
-        font-size: 30px !important;
-        font-weight: 500;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-    }
+.pagination-item, .swiper-pagination-bullet, .swiper-pagination-bullet-active-next-next {
+    transform: scale(1) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    margin: 2px 0;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-size: 30px !important;
+    font-weight: 500;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
 
-    .pagination-item:hover, .swiper-pagination-bullet:hover, .swiper-pagination-bullet-active-next-next:hover {
-        color: #786AF7;
-        cursor: pointer;
-    }
+.pagination-item:hover, .swiper-pagination-bullet:hover, .swiper-pagination-bullet-active-next-next:hover {
+    color: #786AF7;
+    cursor: pointer;
+}
 
-    .swiper-pagination-bullet-active {
-        background-color: #786AF7 !important;
-    }
+.swiper-pagination-bullet-active {
+    background-color: #786AF7 !important;
+}
 
-    @screen sm {
-        .pagination-item {
-            width: 56px !important;
-            height: 56px !important;
-            font-size: 40px !important;
-        }
+@screen sm {
+    .pagination-item {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 40px !important;
     }
 }
 

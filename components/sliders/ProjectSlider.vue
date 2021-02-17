@@ -52,12 +52,12 @@ export default {
   }),
   methods: {
     scrollHandler (evt, el) {
-      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
         el.classList.add('animate')
       }
     },
     scrollHandlerPagination (evt, el) {
-      if (el.getBoundingClientRect().top < 1000 && !el.classList.contains('animate')) {
+      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
         el.classList.add('animate')
       }
     }

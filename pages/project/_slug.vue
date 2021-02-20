@@ -6,7 +6,9 @@
           class="container start-animate-position flex lg:items-end lg:flex-row flex-col flex-wrap"
       >
         <h1 class="main-title lg:mr-16">Project name</h1>
-        <span class="uppercase xl:mb-4 lg:mb-3  xl:text-xl lg:text-base text-xs lg:mt-0 sm:mt-5 mt-4">portfolio category</span>
+        <span class="uppercase xl:mb-4 lg:mb-3  xl:text-xl lg:text-base text-xs lg:mt-0 sm:mt-5 mt-4">
+          portfolio category
+        </span>
       </div>
     </div>
 

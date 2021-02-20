@@ -114,6 +114,10 @@ export default {
                 title
               }
             }
+            seo {
+              title
+              metaDesc
+            }
           }
         }
       `,
@@ -159,6 +163,18 @@ export default {
     handleResize({ width }) {
       this.isFixTitle = width >= 1536
     },
+  },
+  head() {
+    return {
+      title: this.page.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.seo.metDesc,
+        },
+      ],
+    }
   },
 }
 </script>

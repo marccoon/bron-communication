@@ -1,13 +1,14 @@
 <template>
   <div class="relative">
     <Swiper
-      :options="sliderOptions"
       ref="slider"
+      :options="sliderOptions"
       class="w-10/12"
-      style="margin-left: 0 !important;"
+      style="margin-left: 0 !important"
     >
       <SwiperSlide
-        v-for="(project, index) in projects" :key="index"
+        v-for="(project, index) in projects"
+        :key="index"
         :ref="`slide${index}`"
       >
         <ProjectSlide
@@ -19,22 +20,21 @@
       </SwiperSlide>
     </Swiper>
     <div
-      class="swiper-pagination-1 start-animate-position z-10"
       v-scroll="scrollHandlerPagination"
+      class="swiper-pagination-1 start-animate-position z-10"
     ></div>
   </div>
 </template>
 
 <script>
-import ProjectSlide from "@/components/sliders/ProjectSlide";
-import {mapActions, mapState} from "vuex"
+import ProjectSlide from '@/components/sliders/ProjectSlide'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'ProjectSlider',
   components: { ProjectSlide },
   async fetch() {
-    if (!this.projects.length)
-      await this.fetchProject()
+    if (!this.projects.length) await this.fetchProject()
   },
   data: () => ({
     sliderOptions: {
@@ -52,23 +52,25 @@ export default {
       },
     },
   }),
-  computed: mapState(
-    { projects: state => state.project.sliderProject }
-  ),
+  computed: mapState({ projects: (state) => state.project.sliderProject }),
   methods: {
     scrollHandler(evt, el) {
-      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
+      if (
+        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
+        !el.classList.contains('animate')
+      ) {
         el.classList.add('animate')
       }
     },
     scrollHandlerPagination(evt, el) {
-      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
+      if (
+        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
+        !el.classList.contains('animate')
+      ) {
         el.classList.add('animate')
       }
     },
-    ...mapActions(
-      {fetchProject: "project/fetchProjectToSlider"}
-    )
-  }
+    ...mapActions({ fetchProject: 'project/fetchProjectToSlider' }),
+  },
 }
 </script>

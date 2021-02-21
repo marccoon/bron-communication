@@ -1,0 +1,48 @@
+query expertisePage($slug: String!){
+    page: expertiseBy(uri: $slug) {
+        title
+        content
+        enqueuedStylesheets {
+            nodes {
+                src
+            }
+        }
+        attributes {
+            content {
+                title
+                textLeft
+                textFullwidth
+                imageRight {
+                    sourceUrl
+                }
+                imageFullwidth {
+                    sourceUrl
+                }
+            }
+            services {
+                list {
+                    text
+                    title
+                    image {
+                        sourceUrl
+                    }
+                }
+                title
+            }
+            approach {
+                title
+                list {
+                    text
+                    title
+                    image {
+                        sourceUrl
+                    }
+                }
+            }
+        }
+        seo {
+            title
+            metaDesc
+        }
+    }
+}

@@ -1,31 +1,38 @@
 <template>
   <div class="relative">
     <Swiper
-        v-if="load"
-        :options="sliderOptions"
-        ref="slider"
-        class="w-10/12"
-        style="margin-left: 0;"
+      v-if="load"
+      ref="slider"
+      :options="sliderOptions"
+      class="w-10/12"
+      style="margin-left: 0"
     >
-      <SwiperSlide  v-for="(slide, index) in slides" :key="index"
-                    :ref="`slide${index}`"
+      <SwiperSlide
+        v-for="(slide, index) in slides"
+        :key="index"
+        :ref="`slide${index}`"
       >
         <InfoSlide
-            :img="slide.img"
-            :title="slide.title"
-            :text="slide.text"
+          :img="slide.image ? slide.image.sourceUrl : ''"
+          :title="slide.title"
+          :text="slide.text"
         />
       </SwiperSlide>
     </Swiper>
-    <div class="start-animate-position" v-scroll="scrollHandlerPagination" :class="'swiper-pagination-3' + idx" slot="pagination"></div>
+    <div
+      slot="pagination"
+      v-scroll="scrollHandlerPagination"
+      class="start-animate-position"
+      :class="'swiper-pagination-3' + idx"
+    ></div>
   </div>
 </template>
 
 <script>
-import InfoSlide from "@/components/sliders/InfoSlide";
+import InfoSlide from '@/components/sliders/InfoSlide'
 export default {
-  components: {InfoSlide},
-  name: "InfoSlider",
+  name: 'InfoSlider',
+  components: { InfoSlide },
   props: {
     slides: {
       type: Array,
@@ -33,8 +40,8 @@ export default {
     },
     idx: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data: () => ({
     load: false,
@@ -50,24 +57,36 @@ export default {
       pagination: {
         el: `.swiper-pagination-3${this.idx}`,
         clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
+        renderBullet(index, className) {
+          return (
+            '<span class="pagination-item ' +
+            className +
+            '">' +
+            (index + 1) +
+            '</span>'
+          )
         },
       },
     }
     this.load = true
   },
   methods: {
-    scrollHandler (evt, el) {
-      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
+    scrollHandler(evt, el) {
+      if (
+        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
+        !el.classList.contains('animate')
+      ) {
         el.classList.add('animate')
       }
     },
-    scrollHandlerPagination (evt, el) {
-      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
+    scrollHandlerPagination(evt, el) {
+      if (
+        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
+        !el.classList.contains('animate')
+      ) {
         el.classList.add('animate')
       }
-    }
-  }
+    },
+  },
 }
 </script>

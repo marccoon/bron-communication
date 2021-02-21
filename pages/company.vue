@@ -50,8 +50,8 @@
             :text="item.text"
             :reverse="index % 2"
             :class="{
-              'mb-0': index === aboutUs.length - 1,
-              'xl:mb-28 sm:mb-16 mb-10': index !== aboutUs.length - 1,
+              'mb-0': index === page.attributes.aboutUs.length - 1,
+              'xl:mb-28 sm:mb-16 mb-10': index !== page.attributes.aboutUs.length - 1,
             }"
           />
         </div>

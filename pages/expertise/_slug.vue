@@ -8,15 +8,6 @@
       </div>
     </div>
 
-    <section class="section-padding" v-if="page.content">
-      <div class="container">
-        <div
-          class="xl:mt-28 lg:mt-24 sm:mt-20 mt-16"
-          v-html="page.content"
-        ></div>
-      </div>
-    </section>
-
     <section class="section-padding">
       <div class="container">
         <Card
@@ -48,6 +39,16 @@
         </div>
       </div>
     </section>
+
+    <section class="section-padding" v-if="page.content">
+      <div class="container">
+        <div
+          class="xl:mt-28 lg:mt-24 sm:mt-20 mt-16"
+          v-html="page.content"
+        ></div>
+      </div>
+    </section>
+
     <section class="section-padding">
       <div class="container">
         <h2 v-scroll="scrollHandler" class="title start-animate-position">

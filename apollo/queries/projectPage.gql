@@ -1,0 +1,15 @@
+query projectPage($slug: String!){
+    page: projectBy(uri: $slug) {
+        title
+        content
+        enqueuedStylesheets {
+            nodes {
+                src
+            }
+        }
+        seo {
+            title
+            metaDesc
+        }
+    }
+}

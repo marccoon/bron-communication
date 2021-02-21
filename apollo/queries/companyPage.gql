@@ -1,0 +1,43 @@
+{
+    page: pageBy(uri: "company") {
+        title
+        content
+        featuredImage {
+            node {
+                sourceUrl
+            }
+        }
+        attributes {
+            company {
+                text
+                title
+                image {
+                    sourceUrl
+                }
+            }
+            team {
+                fullname
+                position
+                photo {
+                    sourceUrl
+                }
+            }
+            aboutUs {
+                text
+                title
+                image {
+                    sourceUrl
+                }
+            }
+            collaboration {
+                image {
+                    sourceUrl
+                }
+            }
+        }
+        seo {
+            title
+            metaDesc
+        }
+    }
+}

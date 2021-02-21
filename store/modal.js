@@ -1,9 +1,9 @@
 export const state = () => ({
-    modal: false
+  modal: false,
 })
 
-export const mutations =  {
-    modal(state, val) {
-        state.modal = val
-    }
+export const mutations = {
+  modal(state, val) {
+    state.modal = val
+  },
 }

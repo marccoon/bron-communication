@@ -7,7 +7,7 @@
           v-scroll="scrollHandler"
           class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto start-animate-position"
         >
-          {{ page.title }}
+          {{ title }}
         </h1>
         <img
           src="~assets/img/homepage-bg.jpg"
@@ -29,13 +29,13 @@
     <section class="section-padding">
       <div class="container">
         <h2 v-scroll="scrollHandler" class="title start-animate-position">
-          {{ page.aboutBlock.about.title }}
+          {{ about.title }}
         </h2>
         <TextImg
-          :img="page.aboutBlock.about.image.sourceUrl"
-          :text="page.aboutBlock.about.text"
+          :img="about.image.sourceUrl"
+          :text="about.text"
           link-name="learn more about the company"
-          :link="page.aboutBlock.about.link.uri"
+          :link="about.link.uri"
           :reverse="true"
           :img-full="true"
         />
@@ -50,18 +50,18 @@
         <div>
           <div ref="dynamicTitle" v-scroll="fixTitle" class="top-32">
             <h2 v-scroll="scrollHandler" class="title start-animate-position">
-              {{ page.services.serviceTitle }}
+              {{ services.title }}
             </h2>
           </div>
         </div>
         <div>
           <Service
-            v-for="(service, index) in page.services.serviceList"
+            v-for="(service, index) in services.list"
             :key="index"
             :ref="`slide${index}`"
             :class="{
-              'mb-0': index === page.services.serviceList.length - 1,
-              'mb-20': index !== page.services.serviceList.length - 1,
+              'mb-0': index === services.list.length - 1,
+              'mb-20': index !== services.list.length - 1,
             }"
             :icon="service.icon"
             :title="service.title"
@@ -79,56 +79,30 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import ProjectSlider from '@/components/sliders/ProjectSlider'
 import TextImg from '@/components/TextImg'
 import Service from '@/components/Service'
 import Feedback from '@/components/Feedback'
+import mainPageGQL from '~/apollo/queries/mainPage.gql'
 import scroll from '~/mixins/scroll'
 
 export default {
   components: { ProjectSlider, TextImg, Service, Feedback },
   mixins: [scroll],
-  async asyncData({ app }) {
-    const response = await app.apolloProvider.defaultClient.query({
-      query: gql`
-        query mainPage {
-          pageBy(uri: "/") {
-            title
-            aboutBlock {
-              about {
-                text
-                title
-                image {
-                  sourceUrl
-                }
-                link {
-                  ... on Page {
-                    uri
-                  }
-                }
-              }
-            }
-            services {
-              serviceTitle
-              serviceList {
-                icon
-                text
-                title
-              }
-            }
-            seo {
-              title
-              metaDesc
-            }
-          }
+  apollo: {
+    page: {
+      prefetch: true,
+      query: mainPageGQL,
+      result({ data }) {
+        this.title = data.page.title
+        this.seo = data.page.seo
+        this.about = data.page.aboutBlock.about
+        this.services = {
+          title: data.page.services.serviceTitle,
+          list: data.page.services.serviceList,
         }
-      `,
-    })
-
-    return {
-      page: response.data.pageBy,
-    }
+      },
+    },
   },
   data: () => ({
     isFixTitle: false,
@@ -159,12 +133,12 @@ export default {
   },
   head() {
     return {
-      title: this.page.seo.title,
+      title: this.seo.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.page.seo.metaDesc,
+          content: this.seo.metaDesc,
         },
       ],
     }

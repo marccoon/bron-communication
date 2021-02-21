@@ -30,35 +30,24 @@
 
 <script>
 import Feedback from '@/components/Feedback'
-import gql from 'graphql-tag'
-import scroll from "~/mixins/scroll";
+import scroll from '~/mixins/scroll'
+import projectPageGQL from '~/apollo/queries/projectPage.gql'
 
 export default {
   components: { Feedback },
-  async asyncData({ app, route }) {
-    const slug = route.params.slug
-    const response = await app.apolloProvider.defaultClient.query({
-      query: gql`
-        query mainPage {
-          projectBy(uri: "${slug}") {
-            title
-            content
-            enqueuedStylesheets {
-              nodes {
-                src
-              }
-            }
-            seo {
-              title
-              metaDesc
-            }
-          }
+  apollo: {
+    page: {
+      prefetch: true,
+      query: projectPageGQL,
+      variables() {
+        return {
+          slug: this.$route.params.slug,
         }
-      `,
-    })
-    return {
-      page: response.data.projectBy,
-    }
+      },
+      result({ data }) {
+        this.seo = data.page.seo
+      },
+    },
   },
   mixins: [scroll],
   head() {

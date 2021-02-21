@@ -102,64 +102,25 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import TextImg from '@/components/TextImg'
 import TeamSlider from '@/components/sliders/TeamSlider'
 import AboutUsBlock from '@/components/AboutUsBlock'
 import Feedback from '@/components/Feedback'
+import companyPageGQL from '~/apollo/queries/companyPage.gql'
 import scroll from '~/mixins/scroll'
 
 export default {
   name: 'Company',
   components: { TextImg, AboutUsBlock, TeamSlider, Feedback },
   mixins: [scroll],
-  async asyncData({ app }) {
-    const response = await app.apolloProvider.defaultClient.query({
-      query: gql`
-        query fetchCompany {
-          pageBy(uri: "company") {
-            title
-            content
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            attributes {
-              company {
-                text
-                title
-                image {
-                  sourceUrl
-                }
-              }
-              team {
-                fullname
-                position
-                photo {
-                  sourceUrl
-                }
-              }
-              aboutUs {
-                text
-                title
-                image {
-                  sourceUrl
-                }
-              }
-              collaboration {
-                image {
-                  sourceUrl
-                }
-              }
-            }
-          }
-        }
-      `,
-    })
-    return {
-      page: response.data.pageBy,
-    }
+  apollo: {
+    page: {
+      prefetch: true,
+      query: companyPageGQL,
+      result({ data }) {
+        this.seo = data.page.seo
+      },
+    },
   },
   data: () => ({
     sliderOptions: {
@@ -185,5 +146,17 @@ export default {
       },
     },
   }),
+  head() {
+    return {
+      title: this.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seo.metaDesc,
+        },
+      ],
+    }
+  },
 }
 </script>

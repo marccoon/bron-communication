@@ -1,0 +1,31 @@
+{
+    page: pageBy(uri: "/") {
+        title
+        aboutBlock {
+            about {
+                text
+                title
+                image {
+                    sourceUrl
+                }
+                link {
+                    ... on Page {
+                        uri
+                    }
+                }
+            }
+        }
+        services {
+            serviceTitle
+            serviceList {
+                icon
+                text
+                title
+            }
+        }
+        seo {
+            title
+            metaDesc
+        }
+    }
+}

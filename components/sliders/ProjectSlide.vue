@@ -32,11 +32,11 @@
         </h3>
       </div>
 
-      <p
+      <div
         v-html="text"
         class="font-light xl:text-2xl lg:text-xl sm:text-base text-md leading-158 start-animate-position"
         v-scroll="scrollHandler"
-      ></p>
+      ></div>
 
       <Button
         btn="view project"

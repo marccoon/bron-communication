@@ -28,13 +28,17 @@
 
 <script>
 import ProjectSlide from '@/components/sliders/ProjectSlide'
-import { mapActions, mapState } from 'vuex'
+import projectsSliderGQL from '~/apollo/queries/projectsSlider.gql'
 
 export default {
   name: 'ProjectSlider',
   components: { ProjectSlide },
-  async fetch() {
-    if (!this.projects.length) await this.fetchProject()
+  apollo: {
+    projects: {
+      prefetch: true,
+      query: projectsSliderGQL,
+      update: (data) => data.projects.nodes,
+    },
   },
   data: () => ({
     sliderOptions: {
@@ -46,13 +50,12 @@ export default {
       pagination: {
         el: '.swiper-pagination-1',
         clickable: true,
-        // renderBullet: (index, className) => {
-        //   return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
-        // },
+        renderBullet: (index, className) => {
+          return '<span class="pagination-item ' + className + '">' + (index + 1) + '</span>';
+        },
       },
     },
   }),
-  computed: mapState({ projects: (state) => state.project.sliderProject }),
   methods: {
     scrollHandler(evt, el) {
       if (
@@ -70,7 +73,6 @@ export default {
         el.classList.add('animate')
       }
     },
-    ...mapActions({ fetchProject: 'project/fetchProjectToSlider' }),
   },
 }
 </script>

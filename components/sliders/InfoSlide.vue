@@ -17,16 +17,16 @@
                   xl:mb-16 lg:mb-10 sm:mb-5 mb-2.5 sm:mt-0">
         <h3
             v-scroll="scrollHandler"
-            v-html="title"
+            v-text="title"
             class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium start-animate-position"
         >
         </h3>
       </div>
-        <p
+        <div
             v-html="text"
             v-scroll="scrollHandler"
             class="start-animate-position font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
-        ></p>
+        ></div>
     </div>
   </div>
 </template>

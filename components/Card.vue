@@ -50,7 +50,12 @@
             />
           </div>
           <h3 class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium">
-            <n-link v-if="link" :to="link" v-text="title" />
+            <n-link v-if="link" :to="link">
+              {{ title }}
+            </n-link>
+            <span v-else>
+              {{ title }}
+            </span>
           </h3>
         </div>
       </div>
@@ -62,10 +67,10 @@
           'flex flex-col justify-between xl:h-88 lg:h-60 ': btn,
         }"
       >
-        <p
+        <div
           class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158"
           v-html="text"
-        ></p>
+        ></div>
         <Button
           v-if="link && btn"
           :btn="btn"
@@ -79,10 +84,12 @@
 
 <script>
 import Button from '@/components/Button'
+import scroll from '~/mixins/scroll'
 
 export default {
   name: 'Card',
   components: { Button },
+  mixins: [scroll],
   props: {
     img: {
       type: String,
@@ -118,18 +125,7 @@ export default {
     },
   },
   mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
+    console.log(this.text)
   },
 }
 </script>

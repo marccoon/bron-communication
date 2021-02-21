@@ -22,7 +22,7 @@
           :width-full="false"
           btn="view project"
           :link="project.uri"
-          :text-end="index % 2"
+          :text-end="index % 2 === 0"
           :class="{
             'xl:mb-32 lg:mb-24 sm:mb-20 mb-16': index !== project.length - 1,
           }"
@@ -40,28 +40,18 @@
 <script>
 import Card from '@/components/Card'
 import Feedback from '@/components/Feedback'
-import { mapState } from 'vuex'
+import scroll from '~/mixins/scroll'
+import projectsPage from '~/apollo/queries/projectsPage'
 
 export default {
   components: { Card, Feedback },
-  async asyncData({ app }) {
-    if (!app.computed.projects)
-      await app.store.dispatch('project/fetchPageProject')
-  },
-  computed: mapState({ projects: (state) => state.project.pageProject }),
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
+  apollo: {
+    projects: {
+      prefetch: true,
+      query: projectsPage,
+      update: (data) => data.projects.nodes,
     },
   },
+  mixins: [scroll],
 }
 </script>

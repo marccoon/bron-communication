@@ -12,6 +12,7 @@
         <img
           src="~assets/img/homepage-bg.jpg"
           class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0"
+          alt=""
         />
       </div>
     </section>
@@ -78,14 +79,16 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import ProjectSlider from '@/components/sliders/ProjectSlider'
 import TextImg from '@/components/TextImg'
 import Service from '@/components/Service'
 import Feedback from '@/components/Feedback'
-import gql from 'graphql-tag'
+import scroll from '~/mixins/scroll'
 
 export default {
   components: { ProjectSlider, TextImg, Service, Feedback },
+  mixins: [scroll],
   async asyncData({ app }) {
     const response = await app.apolloProvider.defaultClient.query({
       query: gql`
@@ -135,19 +138,9 @@ export default {
     resizeVar: null,
   }),
   mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
     this.isFixTitle = window.innerWidth >= 1536
   },
   methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
     fixTitle(evt, el) {
       if (
         this.$refs.scrollBlock &&
@@ -171,7 +164,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.page.seo.metDesc,
+          content: this.page.seo.metaDesc,
         },
       ],
     }

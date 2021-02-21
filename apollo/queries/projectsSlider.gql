@@ -1,0 +1,14 @@
+{
+  projects(first: 5) {
+    nodes {
+      title
+      excerpt
+      uri
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}

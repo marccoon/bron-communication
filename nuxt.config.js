@@ -5,7 +5,6 @@ export default {
   publicRuntimeConfig: {
     wpEndpoint: process.env.WP_ENDPOINT || '',
   },
-  privateRuntimeConfig: {},
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {

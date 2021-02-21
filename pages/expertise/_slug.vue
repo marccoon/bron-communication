@@ -69,8 +69,10 @@
 import Card from '@/components/Card'
 import InfoSlider from '@/components/sliders/InfoSlider'
 import Feedback from '@/components/Feedback'
+import scroll from "~/mixins/scroll";
 export default {
   components: { Card, InfoSlider, Feedback },
+  mixins: [scroll],
   data: () => ({
     infoSlides: [
       {
@@ -115,19 +117,5 @@ export default {
       },
     ],
   }),
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
-  },
 }
 </script>

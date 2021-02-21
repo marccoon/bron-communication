@@ -5,8 +5,9 @@
         <h1
           v-scroll="scrollHandler"
           class="main-title start-animate-position"
-          v-text="page.title"
-        ></h1>
+        >
+          {{ page.title }}
+        </h1>
       </div>
     </div>
     <section class="section-padding">
@@ -14,8 +15,9 @@
         <h2
           v-scroll="scrollHandler"
           class="title text-title-color start-animate-position"
-          v-text="page.attributes.subtitle"
-        ></h2>
+        >
+          {{ page.attributes.subtitle }}
+        </h2>
 
         <div
           v-scroll="scrollHandler"
@@ -55,8 +57,10 @@
 import Card from '@/components/Card'
 import Feedback from '@/components/Feedback'
 import gql from 'graphql-tag'
+import scroll from "~/mixins/scroll";
 export default {
   components: { Card, Feedback },
+  mixins: [scroll],
   async asyncData({ app, route }) {
     const response = await app.apolloProvider.defaultClient.query({
       query: gql`
@@ -90,20 +94,6 @@ export default {
     return {
       page: response.data.pageBy,
     }
-  },
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
   },
 }
 </script>

@@ -66,23 +66,11 @@
 <script>
 import SocialIcon from '@/components/SocialIcon'
 import Feedback from '@/components/Feedback'
+import scroll from '~/mixins/scroll'
 
 export default {
   components: { SocialIcon, Feedback },
   layout: 'no-footer',
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
-  },
+  mixins: [scroll],
 }
 </script>

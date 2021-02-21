@@ -31,6 +31,7 @@
 <script>
 import Feedback from '@/components/Feedback'
 import gql from 'graphql-tag'
+import scroll from "~/mixins/scroll";
 
 export default {
   components: { Feedback },
@@ -59,20 +60,7 @@ export default {
       page: response.data.projectBy,
     }
   },
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
-  },
+  mixins: [scroll],
   head() {
     const link = []
     const endpoint = this.$config.wpEndpoint
@@ -89,7 +77,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.page.seo.metDesc,
+          content: this.page.seo.metaDesc,
         },
       ],
       link,

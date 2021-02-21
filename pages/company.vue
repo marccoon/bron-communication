@@ -107,10 +107,12 @@ import TextImg from '@/components/TextImg'
 import TeamSlider from '@/components/sliders/TeamSlider'
 import AboutUsBlock from '@/components/AboutUsBlock'
 import Feedback from '@/components/Feedback'
+import scroll from '~/mixins/scroll'
 
 export default {
   name: 'Company',
   components: { TextImg, AboutUsBlock, TeamSlider, Feedback },
+  mixins: [scroll],
   async asyncData({ app }) {
     const response = await app.apolloProvider.defaultClient.query({
       query: gql`
@@ -183,19 +185,5 @@ export default {
       },
     },
   }),
-  mounted() {
-    const event = new Event('scroll')
-    window.dispatchEvent(event)
-  },
-  methods: {
-    scrollHandler(evt, el) {
-      if (
-        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
-        !el.classList.contains('animate')
-      ) {
-        el.classList.add('animate')
-      }
-    },
-  },
 }
 </script>

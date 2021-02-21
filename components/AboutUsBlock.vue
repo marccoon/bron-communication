@@ -20,10 +20,10 @@
       }"
     >
       <h3 class="text-title-color title-block sm:mt-0 mt-5">{{ title }}</h3>
-      <p
+      <div
         class="font-light xl:text-2xl lg:text-xl sm:text-base xl:leading-158 lg:leading-158 sm:leading-158 leading-158 text-xs sm:mt-3 mt-2.5"
         v-html="text"
-      ></p>
+      ></div>
     </div>
   </div>
 </template>

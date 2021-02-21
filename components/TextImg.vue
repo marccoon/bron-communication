@@ -27,11 +27,11 @@
         'flex flex-col justify-center': textCenter,
       }"
     >
-      <p
+      <div
         v-scroll="scrollHandler"
         class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs start-animate-position"
         v-html="text"
-      ></p>
+      ></div>
       <div v-scroll="scrollHandler" class="start-animate-position">
         <n-link
           v-if="link"
@@ -70,25 +70,22 @@ export default {
     },
     linkName: {
       type: String,
-      required: false,
+      default: '',
     },
     link: {
       type: String,
-      required: false,
+      default: '',
     },
     reverse: {
       type: Boolean,
-      required: false,
       default: false,
     },
     imgFull: {
       type: Boolean,
-      required: false,
       default: false,
     },
     textCenter: {
       type: Boolean,
-      required: false,
       default: false,
     },
   },

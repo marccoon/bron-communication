@@ -13,12 +13,12 @@
         {{ title }}
       </h3>
     </div>
-    <p
+    <div
       v-html="text"
       v-scroll="scrollHandler"
       class="font-light xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-8 lg:mt-5 sm:mt-5 mt-2.5
                   xl:leading-158 lg:leading-158 sm:leading-158 leading-158 start-animate-position"
-    ></p>
+    ></div>
   </div>
 </template>
 

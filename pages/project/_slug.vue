@@ -35,21 +35,18 @@ import projectPageGQL from '~/apollo/queries/projectPage.gql'
 
 export default {
   components: { Feedback },
-  apollo: {
-    page: {
-      prefetch: true,
-      query: projectPageGQL,
-      variables() {
-        return {
-          slug: this.$route.params.slug,
-        }
-      },
-      result({ data }) {
-        this.seo = data.page.seo
-      },
-    },
-  },
   mixins: [scroll],
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: projectPageGQL,
+      variables: {
+        slug: route.params.slug,
+      },
+    })
+    return {
+      page: data.page,
+    }
+  },
   head() {
     const link = []
     const endpoint = this.$config.wpEndpoint

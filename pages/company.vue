@@ -2,62 +2,57 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1 class="main-title start-animate-position" v-scroll="scrollHandler">Company</h1>
+        <h1 v-scroll="scrollHandler" class="main-title start-animate-position">
+          {{ page.title }}
+        </h1>
       </div>
     </div>
     <section class="section-padding">
       <div class="container">
         <h2
-            class="title text-title-color xl:w-4/5 start-animate-position"
-            v-scroll="scrollHandler"
+          v-scroll="scrollHandler"
+          class="title text-title-color xl:w-4/5 start-animate-position"
         >
-          We Offer You Pleasant Surprises through Our Ads & Videos
+          {{ page.attributes.company.title }}
         </h2>
         <TextImg
-          img="img/company-img-1.png"
-          text="Bron Communications Sdn. Bhd, a one-stop media advertising
-                  industry by producing all sorts of advertisements that meet expected
-                  marketing effects. <br><br>
-                  We vow to make premium advertisements available to all. In fact, we
-                  have produced big brand advertisements for many Small Medium
-                  Enterprise (SMEs) so that the latter can shine like big brands.<br><br>
-                  If your business needs an expert in mass communication and one-stop
-                  production to improve your sales performance and create overnight
-                  success for your brand, we are here to give you delightful surprises
-                  exceeding your expectations!"
+          :img="
+            page.attributes.company.image
+              ? page.attributes.company.image.sourceUrl
+              : ''
+          "
+          :text="page.attributes.company.text"
         />
       </div>
     </section>
     <section class="section-padding">
       <div class="container xl:grid xl:grid-cols-2 xl:gap-x-10">
         <div>
-          <h2 class="title start-animate-position" v-scroll="scrollHandler">Our team</h2>
+          <h2 v-scroll="scrollHandler" class="title start-animate-position">
+            Our team
+          </h2>
         </div>
-        <TeamSlider
-            :slides="teamSlides"
-        />
+        <TeamSlider :slides="page.attributes.team" />
       </div>
     </section>
-    <section class="section-padding ">
+    <section class="section-padding">
       <div class="container">
-        <h2
-          class="title start-animate-position"
-          v-scroll="scrollHandler"
-        >
+        <h2 v-scroll="scrollHandler" class="title start-animate-position">
           About us
         </h2>
         <div>
           <AboutUsBlock
-              v-for="(item, index) in aboutUs" :key="index"
-              :ref="`slide${index}`"
-              :img="item.img"
-              :title="item.title"
-              :text="item.text"
-              :reverse="item.reverse"
-              :class="{
-                        'mb-0': (index === aboutUs.length - 1),
-                        'xl:mb-28 sm:mb-16 mb-10': (index !== aboutUs.length - 1)
-                      }"
+            v-for="(item, index) in page.attributes.aboutUs"
+            :key="index"
+            :ref="`slide${index}`"
+            :img="item.image ? item.image.sourceUrl : ''"
+            :title="item.title"
+            :text="item.text"
+            :reverse="index % 2"
+            :class="{
+              'mb-0': index === aboutUs.length - 1,
+              'xl:mb-28 sm:mb-16 mb-10': index !== aboutUs.length - 1,
+            }"
           />
         </div>
       </div>
@@ -65,35 +60,34 @@
     <section class="section-padding">
       <div class="container">
         <TextImg
-          img="img/company-img-2.png"
-          text="Bron Communications Sdn. Bhd, a one-stop media advertising
-                  industry by producing all sorts of advertisements that meet expected
-                  marketing effects. <br><br>
-                  We vow to make premium advertisements available to all. In fact, we
-                  have produced big brand advertisements for many Small Medium
-                  Enterprise (SMEs) so that the latter can shine like big brands.<br><br>
-                  If your business needs an expert in mass communication and one-stop
-                  production to improve your sales performance and create overnight
-                  success for your brand, we are here to give you delightful surprises
-                  exceeding your expectations!"
-          linkName=""
+          :img="page.featuredImage ? page.featuredImage.node.sourceUrl : ''"
+          :text="page.content"
+          link-name=""
           link=""
-          :imgFull="true"
-          :textCenter="true"
+          :img-full="true"
+          :text-center="true"
         />
       </div>
     </section>
     <section class="section-padding">
       <div class="container">
-        <h2 class="title start-animate-position" v-scroll="scrollHandler">
+        <h2 v-scroll="scrollHandler" class="title start-animate-position">
           Our collaborations
         </h2>
-        <div class="flex items-center justify-between start-animate-position" v-scroll="scrollHandler">
-          <Swiper
-            :options="sliderOptions"
-          >
-            <SwiperSlide :key="index" v-for="(item, index) in collobrations">
-              <img :src="item" class="xl:w-auto max-w-full xl:mx-auto w-full">
+        <div
+          v-scroll="scrollHandler"
+          class="flex items-center justify-between start-animate-position"
+        >
+          <Swiper :options="sliderOptions">
+            <SwiperSlide
+              v-for="(item, index) in page.attributes.collaboration"
+              :key="index"
+            >
+              <img
+                :src="item.image ? item.image.sourceUrl : ''"
+                class="xl:w-auto max-w-full xl:mx-auto w-full"
+                alt=""
+              />
             </SwiperSlide>
           </Swiper>
         </div>
@@ -101,22 +95,70 @@
     </section>
     <section class="section-padding">
       <div class="container">
-        <Feedback
-            class="mx-auto"
-        />
+        <Feedback class="mx-auto" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import TextImg from "@/components/TextImg";
-import TeamSlider from "@/components/sliders/TeamSlider";
-import AboutUsBlock from "@/components/AboutUsBlock";
-import Feedback from "@/components/Feedback";
+import gql from 'graphql-tag'
+import TextImg from '@/components/TextImg'
+import TeamSlider from '@/components/sliders/TeamSlider'
+import AboutUsBlock from '@/components/AboutUsBlock'
+import Feedback from '@/components/Feedback'
+
 export default {
-  components: {TextImg, AboutUsBlock, TeamSlider, Feedback},
-  name: "company",
+  name: 'Company',
+  components: { TextImg, AboutUsBlock, TeamSlider, Feedback },
+  async asyncData({ app }) {
+    const response = await app.apolloProvider.defaultClient.query({
+      query: gql`
+        query fetchCompany {
+          pageBy(uri: "company") {
+            title
+            content
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            attributes {
+              company {
+                text
+                title
+                image {
+                  sourceUrl
+                }
+              }
+              team {
+                fullname
+                position
+                photo {
+                  sourceUrl
+                }
+              }
+              aboutUs {
+                text
+                title
+                image {
+                  sourceUrl
+                }
+              }
+              collaboration {
+                image {
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+      `,
+    })
+    return {
+      page: response.data.pageBy,
+    }
+  },
   data: () => ({
     sliderOptions: {
       spaceBetween: 10,
@@ -137,91 +179,23 @@ export default {
         1536: {
           spaceBetween: 40,
           slidesPerView: 4,
-        }
-      }
+        },
+      },
     },
-    teamSlides: [
-      {
-        img: 'img/team-img.png',
-        name: 'Mohd Fariz Zulkepley',
-        position: 'Founder + CEO',
-      },
-      {
-        img: 'img/team-img.png',
-        name: 'Mohd Fariz Zulkepley',
-        position: 'Founder + CEO',
-      },
-      {
-        img: 'img/team-img.png',
-        name: 'Mohd Fariz Zulkepley',
-        position: 'Founder + CEO',
-      },
-    ],
-    aboutUs: [
-      {
-        img: 'img/about-1.svg',
-        title: 'Rich experience:',
-        text: 'Our team have accumulated rich\n' +
-            'practical experience for many years, and can lead the\n' +
-            'team to complete any project;\n ',
-        reverse: false,
-      },
-      {
-        img: 'img/about-2.svg',
-        title: 'Professional team:',
-        text: 'We have our own dedicated\n' +
-            'advertising and video production team, consisting of\n' +
-            'highly experienced team members, to come up with\n' +
-            'productions that far exceed your expectations;',
-        reverse: true,
-      },
-      {
-        img: 'img/about-3.svg',
-        title: 'Well-equipped production:',
-        text: 'High-quality advertising\n' +
-            'and video production requires sophisticated\n' +
-            'production equipment. At Bron Communications Sdn.\n' +
-            'Bhd., there is always abundant equipment to ensure\n' +
-            'smooth production. ',
-        reverse: false,
-      },
-      {
-        img: 'img/about-4.svg',
-        title: 'Multimedia Agency:',
-        text: 'As an agency for a variety of\n' +
-            'mainstream media in Malaysia, we can meet the\n' +
-            'diverse advertising requirements of our customers. We\n' +
-            'put advertisements in appropriate media to get\n' +
-            'excellent result with minimum cost;\n',
-        reverse: true,
-      },
-      {
-        img: 'img/about-5.svg',
-        title: 'Complete package:',
-        text: 'We can do everything for you,\n' +
-            'from designing the advertising concept, developing\n' +
-            'the content all the way to post-production. We promise\n' +
-            'to live up to your every expectation;',
-        reverse: false,
-      },
-    ],
-    collobrations: [
-      'img/col-1.svg',
-      'img/col-2.svg',
-      'img/col-3.svg',
-      'img/col-4.svg',
-    ],
   }),
+  mounted() {
+    const event = new Event('scroll')
+    window.dispatchEvent(event)
+  },
   methods: {
     scrollHandler(evt, el) {
-      if (el.getBoundingClientRect().top < self.innerHeight * 1.1 && !el.classList.contains('animate')) {
+      if (
+        el.getBoundingClientRect().top < self.innerHeight * 1.1 &&
+        !el.classList.contains('animate')
+      ) {
         el.classList.add('animate')
       }
-    }
+    },
   },
-  mounted() {
-    const event = new Event('scroll');
-    window.dispatchEvent(event);
-  }
 }
 </script>

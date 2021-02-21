@@ -2,9 +2,11 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1 v-scroll="scrollHandler" class="main-title start-animate-position">
-          Expertise
-        </h1>
+        <h1
+          v-scroll="scrollHandler"
+          class="main-title start-animate-position"
+          v-text="page.title"
+        ></h1>
       </div>
     </div>
     <section class="section-padding">
@@ -12,30 +14,31 @@
         <h2
           v-scroll="scrollHandler"
           class="title text-title-color start-animate-position"
-        >
-          One-stop Ad & Media Services for All of Your Advertising Needs
-        </h2>
+          v-text="page.attributes.subtitle"
+        ></h2>
 
         <div
           v-scroll="scrollHandler"
           class="font-light xl:w-1/2 lg:w-2/3 xl:mb-16 lg:mb-12 sm:mb-10 mb-7 xl:text-2xl lg:text-xl sm:text-base text-xs xl:leading-158 lg:leading-158 sm:leading-158 leading-158 start-animate-position"
-        >
-          Bron Communications Sdn. Bhd. provides one-stop advertising and
-          professional media services including:
-        </div>
+          v-html="page.content"
+        ></div>
         <Card
-          v-for="(block, index) in blocks"
+          v-for="(block, index) in page.attributes.expertisesList"
           :key="index"
           :ref="`block${index}`"
-          :img="block.img"
-          :title="block.title"
-          :text="block.text"
-          btn=""
-          :link="block.link"
-          :width-full="block.widthFull"
-          text-end=""
+          :img="
+            block.expertise.featuredImage
+              ? block.expertise.featuredImage.node.sourceUrl
+              : ''
+          "
+          :title="block.expertise.title"
+          :text="block.expertise.attributes.excerpt"
+          :link="block.expertise.uri"
+          width-full
+          text-end
           :class="{
-            'xl:mb-32 lg:mb-24 sm:mb-20 mb-16': index !== blocks.length - 1,
+            'xl:mb-32 lg:mb-24 sm:mb-20 mb-16':
+              index !== page.attributes.expertisesList.length - 1,
           }"
         />
       </div>
@@ -51,57 +54,43 @@
 <script>
 import Card from '@/components/Card'
 import Feedback from '@/components/Feedback'
+import gql from 'graphql-tag'
 export default {
   components: { Card, Feedback },
-  data: () => ({
-    blocks: [
-      {
-        img: 'img/exp-1.png',
-        title: 'Media & Digital Advertising',
-        text:
-          'Various TV networks, multiple radio stations and countless other media platforms. Backed by marketing ' +
-          'creativity and invaluable experience, we develop efficient strategic campaigns to gain maximum impact ' +
-          'for your brand. Our strong relationship with media owners only means that our clients only enjoy the ' +
-          'best rates in the market. <br><br>  ' +
-          'A successful digital campaign ensures the highest ROI and augments your brand’s visibility over ' +
-          'the internet. Through growth-obsessed digital marketing we put strategies in motion and connect ' +
-          'you with the right people, at the right time. ',
-        widthFull: true,
-        link: 'expertise/media',
-      },
-      {
-        img: 'img/exp-2.png',
-        title: 'Video Production',
-        text:
-          'We also specialize in digital video productions, which include the following:<br> <br>  ' +
-          'Creative content creation, video production, TV program production, TV commercial production, ' +
-          'motion graphics (2D and 3D), corporate videos etc. ',
-        widthFull: true,
-        link: 'expertise/video',
-      },
-      {
-        img: 'img/exp-3.png',
-        title: 'Event Management',
-        text:
-          'Events are an essential platform to communicate a campaign’s message to the audience. We specialize ' +
-          'in the enhancement of your events with unique and creative ideas. From large conferences to small brand ' +
-          'activation campaigns, we strive to understand your needs and objectives. time. ',
-        widthFull: true,
-        link: 'expertise/event',
-      },
-      {
-        img: 'img/exp-4.png',
-        title: 'PR (Public Relation)',
-        text:
-          'Get the media coverage your company deserve! We help to make it happen by guiding you through ' +
-          'engaging press releases, connecting you with journalists, and putting your business in front of ' +
-          'people that matter. With the relevant industry expertise, know-how, strong relationships and great ' +
-          'contacts, we can get your brand heard and amplify its messages to journalists, influencers and bloggers',
-        widthFull: true,
-        link: 'expertise/pr',
-      },
-    ],
-  }),
+  async asyncData({ app, route }) {
+    const response = await app.apolloProvider.defaultClient.query({
+      query: gql`
+        query expertisePage {
+          pageBy(uri: "expertise") {
+            title
+            content
+            attributes {
+              subtitle
+              expertisesList {
+                expertise {
+                  ... on Expertise {
+                    attributes {
+                      excerpt
+                    }
+                    title
+                    uri
+                    featuredImage {
+                      node {
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    })
+    return {
+      page: response.data.pageBy,
+    }
+  },
   mounted() {
     const event = new Event('scroll')
     window.dispatchEvent(event)

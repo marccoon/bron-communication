@@ -2,10 +2,7 @@
   <div class="wrap-padding">
     <div>
       <div class="container">
-        <h1
-          v-scroll="scrollHandler"
-          class="main-title start-animate-position"
-        >
+        <h1 v-scroll="scrollHandler" class="main-title start-animate-position">
           {{ page.title }}
         </h1>
       </div>
@@ -16,7 +13,7 @@
           v-scroll="scrollHandler"
           class="title text-title-color start-animate-position"
         >
-          {{ page.attributes.subtitle }}
+          {{ page.subtitle }}
         </h2>
 
         <div
@@ -25,7 +22,7 @@
           v-html="page.content"
         ></div>
         <Card
-          v-for="(block, index) in page.attributes.expertisesList"
+          v-for="(block, index) in expertises"
           :key="index"
           :ref="`block${index}`"
           :img="
@@ -40,7 +37,7 @@
           text-end
           :class="{
             'xl:mb-32 lg:mb-24 sm:mb-20 mb-16':
-              index !== page.attributes.expertisesList.length - 1,
+              index !== expertises.length - 1,
           }"
         />
       </div>
@@ -56,43 +53,34 @@
 <script>
 import Card from '@/components/Card'
 import Feedback from '@/components/Feedback'
-import gql from 'graphql-tag'
-import scroll from "~/mixins/scroll";
+import scroll from '~/mixins/scroll'
+import expertisesPageGQL from '~/apollo/queries/expertisesPage.gql'
+
 export default {
   components: { Card, Feedback },
   mixins: [scroll],
-  async asyncData({ app, route }) {
-    const response = await app.apolloProvider.defaultClient.query({
-      query: gql`
-        query expertisePage {
-          pageBy(uri: "expertise") {
-            title
-            content
-            attributes {
-              subtitle
-              expertisesList {
-                expertise {
-                  ... on Expertise {
-                    attributes {
-                      excerpt
-                    }
-                    title
-                    uri
-                    featuredImage {
-                      node {
-                        sourceUrl
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+  async asyncData({ app }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: expertisesPageGQL,
     })
     return {
-      page: response.data.pageBy,
+      page: {
+        subtitle: data.page.attributes.subtitle,
+        ...data.page,
+      },
+      expertises: data.page.attributes.expertisesList,
+    }
+  },
+  head() {
+    return {
+      title: this.page.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.seo.metaDesc,
+        },
+      ],
     }
   },
 }

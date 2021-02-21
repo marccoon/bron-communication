@@ -22,9 +22,9 @@
           :width-full="false"
           btn="view project"
           :link="project.uri"
-          :text-end="index % 2 === 0"
+          :text-end="index % 2 !== 0"
           :class="{
-            'xl:mb-32 lg:mb-24 sm:mb-20 mb-16': index !== project.length - 1,
+            'xl:mb-32 lg:mb-24 sm:mb-20 mb-16': index !== projects.length - 1,
           }"
         />
       </div>
@@ -41,33 +41,31 @@
 import Card from '@/components/Card'
 import Feedback from '@/components/Feedback'
 import scroll from '~/mixins/scroll'
-import projectsPage from '~/apollo/queries/projectsPage'
+import projectsPageGQL from '~/apollo/queries/projectsPage'
 
 export default {
   components: { Card, Feedback },
-  apollo: {
-    projects: {
-      prefetch: true,
-      query: projectsPage,
-      update: (data) => data.projects.nodes,
-      result({ data }) {
-        this.seo = data.page.seo
-      },
-    },
-  },
   mixins: [scroll],
+  async asyncData({ app }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: projectsPageGQL,
+    })
+    return {
+      projects: data.projects.nodes,
+      page: data.page,
+    }
+  },
   head() {
     return {
-      title: this.seo.title,
+      title: this.page.seo.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.seo.metaDesc,
+          content: this.page.seo.metaDesc,
         },
       ],
     }
   },
-
 }
 </script>

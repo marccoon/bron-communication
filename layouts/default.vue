@@ -1,19 +1,18 @@
 <template>
   <div class="relative">
-    <Header  />
+    <Header />
     <Form class="z-50" />
     <Nuxt />
 
     <Footer />
   </div>
 </template>
-<style>
-</style>
+<style></style>
 <script>
-import Header from "~/components/header/Header";
-import Footer from "~/components/footer/Footer";
-import Form from "~/components/Form"
+import Header from '~/components/header/Header'
+import Footer from '~/components/footer/Footer'
+import Form from '~/components/Form'
 export default {
-  components: {Footer, Header, Form},
+  components: { Footer, Header, Form },
 }
 </script>

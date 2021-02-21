@@ -7,7 +7,7 @@
           v-scroll="scrollHandler"
           class="main-title relative xl:w-3/4 lg:w-11/12 z-10 mx-auto start-animate-position"
         >
-          {{ title }}
+          {{ page.title }}
         </h1>
         <img
           src="~assets/img/homepage-bg.jpg"
@@ -89,20 +89,18 @@ import scroll from '~/mixins/scroll'
 export default {
   components: { ProjectSlider, TextImg, Service, Feedback },
   mixins: [scroll],
-  apollo: {
-    page: {
-      prefetch: true,
+  async asyncData({ app }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
       query: mainPageGQL,
-      result({ data }) {
-        this.title = data.page.title
-        this.seo = data.page.seo
-        this.about = data.page.aboutBlock.about
-        this.services = {
-          title: data.page.services.serviceTitle,
-          list: data.page.services.serviceList,
-        }
+    })
+    return {
+      page: data.page,
+      about: data.page.aboutBlock.about,
+      services: {
+        title: data.page.services.serviceTitle,
+        list: data.page.services.serviceList,
       },
-    },
+    }
   },
   data: () => ({
     isFixTitle: false,
@@ -133,12 +131,12 @@ export default {
   },
   head() {
     return {
-      title: this.seo.title,
+      title: this.page.seo.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.seo.metaDesc,
+          content: this.page.seo.metaDesc,
         },
       ],
     }

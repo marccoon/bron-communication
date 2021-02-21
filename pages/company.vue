@@ -48,7 +48,7 @@
             :img="item.image ? item.image.sourceUrl : ''"
             :title="item.title"
             :text="item.text"
-            :reverse="index % 2"
+            :reverse="index % 2 !== 0"
             :class="{
               'mb-0': index === page.attributes.aboutUs.length - 1,
               'xl:mb-28 sm:mb-16 mb-10': index !== page.attributes.aboutUs.length - 1,
@@ -113,14 +113,13 @@ export default {
   name: 'Company',
   components: { TextImg, AboutUsBlock, TeamSlider, Feedback },
   mixins: [scroll],
-  apollo: {
-    page: {
-      prefetch: true,
+  async asyncData({ app }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
       query: companyPageGQL,
-      result({ data }) {
-        this.seo = data.page.seo
-      },
-    },
+    })
+    return {
+      page: data.page,
+    }
   },
   data: () => ({
     sliderOptions: {
@@ -148,12 +147,12 @@ export default {
   }),
   head() {
     return {
-      title: this.seo.title,
+      title: this.page.seo.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.seo.metaDesc,
+          content: this.page.seo.metaDesc,
         },
       ],
     }

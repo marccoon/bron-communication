@@ -1,0 +1,29 @@
+{
+    page: pageBy(uri: "expertise") {
+        title
+        content
+        attributes {
+            subtitle
+            expertisesList {
+                expertise {
+                    ... on Expertise {
+                        attributes {
+                            excerpt
+                        }
+                        title
+                        uri
+                        featuredImage {
+                            node {
+                                sourceUrl
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        seo {
+            title
+            metaDesc
+        }
+    }
+}

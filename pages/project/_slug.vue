@@ -76,7 +76,8 @@ export default {
   head() {
     const link = []
     const endpoint = this.$config.wpEndpoint
-    this.page.enqueuedStylesheets.nodes.forEach(function (data) {
+    const styles = this.page.enqueuedStylesheets.nodes
+    styles.forEach(function (data) {
       link.push({
         rel: 'stylesheet',
         href: `${endpoint}/${data.src}`,

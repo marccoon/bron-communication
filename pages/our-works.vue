@@ -50,8 +50,24 @@ export default {
       prefetch: true,
       query: projectsPage,
       update: (data) => data.projects.nodes,
+      result({ data }) {
+        this.seo = data.page.seo
+      },
     },
   },
   mixins: [scroll],
+  head() {
+    return {
+      title: this.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seo.metaDesc,
+        },
+      ],
+    }
+  },
+
 }
 </script>

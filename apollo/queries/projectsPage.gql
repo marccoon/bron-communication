@@ -11,4 +11,10 @@
       }
     }
   }
+  page: pageBy(uri: "our-works") {
+    seo {
+      title
+      metaDesc
+    }
+  }
 }

@@ -6,7 +6,7 @@
         class="container start-animate-position flex lg:items-end lg:flex-row flex-col flex-wrap"
       >
         <h1 class="main-title lg:mr-16">
-          {{ project.title }}
+          {{ page.title }}
         </h1>
         <span
           class="uppercase xl:mb-4 lg:mb-3 xl:text-xl lg:text-base text-xs lg:mt-0 sm:mt-5 mt-4"
@@ -16,7 +16,9 @@
       </div>
     </div>
 
-    <section class="section-padding" v-html="project.content"></section>
+    <section class="section-padding">
+      <div class="container" v-html="page.content"></div>
+    </section>
 
     <section class="section-padding">
       <div class="container">
@@ -34,13 +36,17 @@ export default {
   components: { Feedback },
   async asyncData({ app, route }) {
     const slug = route.params.slug
-    console.log(slug)
     const response = await app.apolloProvider.defaultClient.query({
       query: gql`
         query mainPage {
           projectBy(uri: "${slug}") {
             title
             content
+            enqueuedStylesheets {
+              nodes {
+                src
+              }
+            }
             seo {
               title
               metaDesc
@@ -50,7 +56,7 @@ export default {
       `,
     })
     return {
-      project: response.data.projectBy,
+      page: response.data.projectBy,
     }
   },
   mounted() {
@@ -68,15 +74,24 @@ export default {
     },
   },
   head() {
+    const link = []
+    const endpoint = this.$config.wpEndpoint
+    this.page.enqueuedStylesheets.nodes.forEach(function (data) {
+      link.push({
+        rel: 'stylesheet',
+        href: `${endpoint}/${data.src}`,
+      })
+    })
     return {
-      title: this.project.seo.title,
+      title: this.page.seo.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.project.seo.metDesc,
+          content: this.page.seo.metDesc,
         },
       ],
+      link,
     }
   },
 }

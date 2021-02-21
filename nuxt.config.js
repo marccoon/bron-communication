@@ -2,6 +2,11 @@ export default {
   server: {
     port: 3090,
   },
+  publicRuntimeConfig: {
+    wpEndpoint: process.env.WP_ENDPOINT || '',
+  },
+  privateRuntimeConfig: {},
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'app',

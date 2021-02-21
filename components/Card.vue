@@ -49,10 +49,9 @@
               alt=""
             />
           </div>
-          <h3
-            class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium"
-            v-html="title"
-          ></h3>
+          <h3 class="xl:text-6xl lg:text-4xl sm:text-3xl text-2xl font-medium">
+            <n-link v-if="link" :to="link" v-text="title" />
+          </h3>
         </div>
       </div>
 
@@ -68,7 +67,7 @@
           v-html="text"
         ></p>
         <Button
-          v-if="btn"
+          v-if="link && btn"
           :btn="btn"
           :link="link"
           class="max-w-xs sm:max-w-full mt-5"

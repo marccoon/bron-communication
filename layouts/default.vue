@@ -4,7 +4,7 @@
     <Form class="z-50" />
     <Nuxt />
 
-    <Footer />
+    <Footer v-if="$route.name !== 'contact'" />
   </div>
 </template>
 <style></style>

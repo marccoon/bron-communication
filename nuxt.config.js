@@ -47,7 +47,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_ENDPOINT,
+        httpEndpoint: 'https://bron-api.dev.fullstack.by/graphql',
       },
     },
   },

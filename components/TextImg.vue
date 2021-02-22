@@ -36,14 +36,13 @@
         <n-link
           v-if="link"
           :to="link"
-          tag="button"
           class="text-link underline xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5"
         >
-          <span
-            class="inline-block duration-700 transform hover:scale-110 transition-all"
+          <button
+            class="inline-block duration-700 transform hover:scale-110 transition-all mt-5"
           >
             {{ linkName }}
-          </span>
+          </button>
         </n-link>
         <button
           v-else

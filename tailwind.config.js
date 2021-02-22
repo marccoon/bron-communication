@@ -69,6 +69,10 @@ module.exports = {
       padding: {
         104: '26rem',
       },
+      fill: {
+        'arrow-active': '#786AF7',
+        white: '#fff',
+      },
     },
   },
   variants: {
@@ -77,6 +81,12 @@ module.exports = {
       width: ['group-hover', 'hover'],
       scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
       transitionDuration: ['hover', 'group-hover'],
+      opacity: ['group-hover'],
+      rotate: ['group-hover'],
+      pointerEvents: ['group-hover'],
+      textColor: ['group-hover'],
+      fill: ['hover', 'group-hover'],
+      translate: ['group-hover'],
     },
   },
   plugins: [],

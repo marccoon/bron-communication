@@ -70,7 +70,6 @@ import scroll from '~/mixins/scroll'
 
 export default {
   components: { SocialIcon, Feedback },
-  layout: 'no-footer',
   mixins: [scroll],
 }
 </script>

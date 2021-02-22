@@ -111,6 +111,7 @@ export default {
   }),
   mounted() {
     this.isFixTitle = window.innerWidth >= 1536
+    console.log(this.services)
   },
   methods: {
     fixTitle(evt, el) {

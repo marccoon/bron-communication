@@ -40,7 +40,7 @@
       </div>
     </section>
 
-    <section class="section-padding" v-if="page.content">
+    <section v-if="page.content" class="section-padding">
       <div class="container">
         <div
           class="xl:mt-28 lg:mt-24 sm:mt-20 mt-16"

@@ -1,58 +1,51 @@
 <template>
-    <header
-        class="fixed transform transition-all delay-200 duration-700 z-20 left-0 right-0"
-        :class="{
-          'sm:py-10 py-7 bg-transparent': !active || menuOpen,
-          'py-3 bg-body': active && !menuOpen,
-          'start-animate-position': firstLoading
-        }"
-        v-scroll="scrollHandler"
-        ref="header"
-    >
+  <header
+    ref="header"
+    v-scroll="scrollHandler"
+    class="fixed transform transition-all delay-200 duration-700 z-20 left-0 right-0"
+    :class="{
+      'sm:py-10 py-7 bg-transparent': !active || menuOpen,
+      'py-3 bg-body': active && !menuOpen,
+      'start-animate-position': firstLoading,
+    }"
+  >
+    <div class="container flex items-center justify-between box-border">
+      <Logo class="z-10 sm:w-auto w-36" :active="active" />
+      <Menu :active="menuOpen" @close="menuOpen = false" />
       <div
-          class="container flex items-center justify-between box-border"
+        class="lg:hidden w-16 h-10 flex justify-end items-center"
+        @click="menuOpen = !menuOpen"
       >
-        <Logo
-            class="z-10 sm:w-auto w-36"
-            :active="active"
-        />
-        <Menu
-            :active="menuOpen"
-            @close="menuOpen = false"
-        />
-        <div @click="menuOpen = !menuOpen"
-             class="lg:hidden w-16 h-10 flex justify-end items-center"
-        >
-          <button v-if="!menuOpen">
-            <img alt="whopper" src="~assets/img/menu.svg">
-          </button>
-          <button v-else class="z-50 relative">
-            <img alt="cross" src="~assets/img/menu-close.svg">
-          </button>
-        </div>
+        <button v-if="!menuOpen">
+          <img alt="whopper" src="~assets/img/menu.svg" />
+        </button>
+        <button v-else class="z-50 relative">
+          <img alt="cross" src="~assets/img/menu-close.svg" />
+        </button>
       </div>
-    </header>
+    </div>
+  </header>
 </template>
 
 <script>
-import Logo from "@/components/Logo";
-import Menu from "@/components/header/Menu";
+import Logo from '@/components/Logo'
+import Menu from '@/components/header/Menu'
 
 export default {
-  name: "Header",
-  components: {Logo, Menu},
+  name: 'Header',
+  components: { Logo, Menu },
   data: () => ({
     menuOpen: false,
     active: false,
-    firstLoading: true
+    firstLoading: true,
   }),
   methods: {
-    scrollHandler (evt, el) {
+    scrollHandler(evt, el) {
       if (el.classList.contains('start-animate-position')) {
         this.firstLoading = false
         return false
       }
-      self.scrollY > 50 ? this.active = true : this.active = false
+      self.scrollY > 50 ? (this.active = true) : (this.active = false)
     },
   },
 }

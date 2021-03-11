@@ -28,7 +28,7 @@
             v-scroll="scrollHandler"
             class="start-animate-position group overflow-hidden"
           >
-            <img
+            <img loading="lazy"
               :src="
                 content.imageFullwidth ? content.imageFullwidth.sourceUrl : ''
               "

@@ -14,7 +14,7 @@
         'order-1': !reverse,
       }"
     >
-      <img
+      <img loading="lazy"
         :src="img"
         alt=""
         class="w-full transform transition duration-700 group-hover:scale-110"

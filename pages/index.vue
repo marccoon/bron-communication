@@ -9,7 +9,7 @@
         >
           {{ page.title }}
         </h1>
-        <img
+        <img loading="lazy"
           src="~assets/img/homepage-bg.jpg"
           class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0"
           alt=""

@@ -5,7 +5,7 @@
           class=" group overflow-hidden start-animate-position-img"
           v-scroll="scrollHandler"
       >
-        <img
+        <img loading="lazy"
             :src="img"
             class="w-full object-cover transform transition duration-700 group-hover:scale-110"
             alt=""

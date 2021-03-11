@@ -17,10 +17,10 @@
         @click="menuOpen = !menuOpen"
       >
         <button v-if="!menuOpen">
-          <img alt="whopper" src="~assets/img/menu.svg" />
+          <img loading="lazy" alt="whopper" src="~assets/img/menu.svg" />
         </button>
         <button v-else class="z-50 relative">
-          <img alt="cross" src="~assets/img/menu-close.svg" />
+          <img loading="lazy" alt="cross" src="~assets/img/menu-close.svg" />
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <nuxt-link exact to="/">
-    <img :class="{ hidden: active }" src="~assets/img/logo.svg" alt="logo" />
-    <img
+    <img loading="lazy" :class="{ hidden: active }" src="~assets/img/logo.svg" alt="logo" />
+    <img loading="lazy"
       :class="{ hidden: !active }"
       src="~assets/img/logo-active.svg"
       alt="logo"

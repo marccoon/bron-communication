@@ -8,7 +8,7 @@
          'sm:mr-10 mr-7': index !== socialIcons.length - 1,
        }"
     >
-      <img :src=icon.img
+      <img loading="lazy" :src=icon.img
       >
     </a>
   </div>

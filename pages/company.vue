@@ -83,7 +83,7 @@
               v-for="(item, index) in page.attributes.collaboration"
               :key="index"
             >
-              <img
+              <img loading="lazy"
                 :src="item.image ? item.image.sourceUrl : ''"
                 class="xl:w-auto max-w-full xl:mx-auto w-full"
                 alt=""

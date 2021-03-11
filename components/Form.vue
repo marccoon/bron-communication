@@ -17,7 +17,7 @@
             class="absolute w-8 sm:top-10 top-5 sm:right-10 right-5 cursor-pointer"
             @click="closeModal"
         >
-          <img src="~assets/img/menu-close.svg" alt="close menu">
+          <img loading="lazy" src="~assets/img/menu-close.svg" alt="close menu">
         </div>
 
         <h4 class="font-light sm:text-2xl text-xl sm:text-left text-center">

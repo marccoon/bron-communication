@@ -4,7 +4,7 @@
       v-scroll="scrollHandler"
       class="flex sm:items-center items-start sm:flex-row start-animate-position flex-col"
     >
-      <img
+      <img loading="lazy"
         :src="'/icons/' + icon + '.png'"
         :alt="icon"
         class="sm:mr-10 sm:ml-0 mx-auto"
@@ -45,7 +45,7 @@
           learn more
         </span>
 
-        <img
+        <img loading="lazy"
           class="ml-3 duration-700 transform group-hover:translate-x-5 transition-all group-hover:translate-x-6"
           src="~assets/img/link-arrow.svg"
           alt="arrow"

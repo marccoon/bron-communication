@@ -4,7 +4,7 @@
       v-scroll="scrollHandler"
       class="xl:w-full xl:pr-0 lg:pr-10 sm:pr-7 group overflow-hidden start-animate-position-img"
     >
-      <img
+      <img loading="lazy"
         :src="img"
         class="w-full transform transition duration-700 group-hover:scale-110"
         alt=""

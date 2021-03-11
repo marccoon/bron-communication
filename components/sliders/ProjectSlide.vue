@@ -4,7 +4,7 @@
       v-scroll="scrollHandler"
       class="xl:w-full lg:w-6/12 sm:w-5/12 w-4/5 xl:pr-0 lg:pr-10 sm:pr-7 group overflow-hidden hover:cursor-pointer start-animate-position-img"
     >
-      <img
+      <img loading="lazy"
         v-if="img"
         :src="img.node.sourceUrl"
         class="w-full transform transition duration-700 group-hover:scale-110"
@@ -23,7 +23,7 @@
           <span class="uppercase xl:text-xl lg:text-base text-xs"
             >portfolio category</span
           >
-          <img
+          <img loading="lazy"
             src="~assets/img/btn-icon.svg"
             class="lg:w-auto w-7 lg:ml-5 ml-4"
             alt=""

@@ -10,7 +10,7 @@
         'sm:order-1 lg:pr-16 sm:pr-12 xl:pr-0': !reverse,
       }"
     >
-      <img :src="img" alt="" class="xl:mx-auto" />
+      <img loading="lazy" :src="img" alt="" class="xl:mx-auto" />
     </div>
     <div
       class="xl:w-full sm:w-2/3 flex flex-col justify-center"

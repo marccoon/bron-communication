@@ -1,5 +1,5 @@
-{
-    page: pageBy(uri: "/") {
+query GetMain {
+    page(id: "/", idType: URI) {
         title
         aboutBlock {
             about {
@@ -21,6 +21,11 @@
                 icon
                 text
                 title
+                link {
+                    ... on Expertise {
+                        uri
+                    }
+                }
             }
         }
         seo {

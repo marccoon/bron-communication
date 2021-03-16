@@ -7,43 +7,22 @@
     }"
   >
     <div class="menu-container flex lg:items-center lg:flex-row flex-col">
-      <menu class="px-0">
+      <menu v-if="menu" class="px-0">
         <ul
           class="flex lg:flex-row flex-col text-menu xl:text-xl lg:text-base text-2xl lg:font-normal font-medium"
         >
-          <li class="xl:px-2 xl:ml-10 lg:ml-5 lg:mt-0 mt-5 group">
-            <n-link
-              to="/company"
-              active-class="lg:text-menu-active"
-              class="lg:group-hover:text-menu-active cursor-pointer transition-all duration-150"
-              @click.native="closeMenu"
-            >
-              Company
-              <div
-                v-if="!isMobile"
-                class="flex justify-center pointer-events-none"
-              >
-                <div
-                  class="h-0.5 bg-btn rounded-lg transition-all duration-700 group-hover:w-full"
-                  :class="{
-                    'w-full': $route.name === 'company',
-                    'w-0': $route.name !== 'company',
-                  }"
-                ></div>
-              </div>
-            </n-link>
-          </li>
-
           <li
+            v-for="(item, idx) in menu"
+            :key="idx"
             class="group xl:px-2 relative group xl:ml-10 lg:ml-5 lg:mt-0 mt-5 lg:flex items-center"
           >
             <n-link
-              to="/expertise"
+              :to="item.path"
               class="lg:group-hover:text-menu-active cursor-pointer transition-all duration-150 mr-2"
-              :class="{ 'lg:text-menu-active': $route.name === 'expertise' }"
+              :class="{ 'lg:text-menu-active': $route.path === item.path }"
               @click.native="closeMenu"
             >
-              Expertise
+              {{ item.label }}
               <div
                 v-if="!isMobile"
                 class="flex justify-center pointer-events-none"
@@ -51,14 +30,15 @@
                 <div
                   class="h-0.5 w-0 bg-btn rounded-lg transition-all duration-700 group-hover:w-full"
                   :class="{
-                    'w-full': $route.name === 'expertise',
-                    'w-0': $route.name !== 'expertise',
+                    'w-full': $route.path === item.path,
+                    'w-0': $route.path !== item.path,
                   }"
                 ></div>
               </div>
             </n-link>
 
             <svg
+              v-if="item.childItems.nodes.length"
               width="16"
               height="9"
               viewBox="0 0 16 9"
@@ -70,102 +50,35 @@
                 d="M0 1.28636L8 9L16 1.28636L14.6668 7.85698e-08L8 6.42909L1.33318 7.85698e-08L0 1.28636Z"
                 class="group-hover:fill-arrow-active"
                 :class="{
-                  'fill-white': $route.name !== 'expertise',
-                  'fill-arrow-active': $route.name === 'expertise',
+                  'fill-white': $route.path !== item.path,
+                  'fill-arrow-active': $route.path === item.path,
                 }"
               />
             </svg>
 
             <div
+              v-if="item.childItems.nodes.length"
               class="py-2 pt-3 min-w-full left-0 top-full lg:absolute transition-all duration-700"
               :class="{
                 'opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto': !isMobile,
               }"
             >
               <ul class="lg:bg-body px-3 lg:p-5">
-                <li class="mb-2">
+                <li
+                  v-for="(sub, sidx) in item.childItems.nodes"
+                  :key="sidx"
+                  class="mb-2"
+                >
                   <n-link
                     class="whitespace-nowrap lg:hover:text-menu-active cursor-pointer transition-all duration-150"
-                    to="/expertise/media-digital"
-                    @click.native="closeMenu"
-                    >Media & Digital</n-link
-                  >
-                </li>
-                <li class="mb-2">
-                  <n-link
-                    class="whitespace-nowrap lg:hover:text-menu-active cursor-pointer transition-all duration-150"
-                    to="/expertise/video-production"
+                    :to="sub.path"
                     @click.native="closeMenu"
                   >
-                    Video Production
-                  </n-link>
-                </li>
-                <li class="mb-2">
-                  <n-link
-                    class="whitespace-nowrap lg:hover:text-menu-active cursor-pointer transition-all duration-150"
-                    to="/expertise/event-management"
-                    @click.native="closeMenu"
-                  >
-                    Event Management
-                  </n-link>
-                </li>
-                <li>
-                  <n-link
-                    class="whitespace-nowrap lg:hover:text-menu-active cursor-pointer transition-all duration-150"
-                    to="/expertise/pr-public-relation"
-                    @click.native="closeMenu"
-                  >
-                    PR (Public Relation)
+                    {{ sub.label }}
                   </n-link>
                 </li>
               </ul>
             </div>
-          </li>
-
-          <li class="group xl:px-2 xl:ml-10 lg:ml-5 lg:mt-0 mt-5">
-            <n-link
-              to="/our-works"
-              active-class="lg:text-menu-active"
-              class="lg:group-hover:text-menu-active cursor-pointer transition-all duration-150"
-              @click.native="closeMenu"
-            >
-              Our Works
-              <div
-                v-if="!isMobile"
-                class="flex justify-center pointer-events-none"
-              >
-                <div
-                  class="h-0.5 w-0 bg-btn rounded-lg transition-all duration-700 group-hover:w-full"
-                  :class="{
-                    'w-full': $route.name === 'our-works',
-                    'w-0': $route.name !== 'our-works',
-                  }"
-                ></div>
-              </div>
-            </n-link>
-          </li>
-
-          <li class="group xl:px-2 xl:ml-10 lg:ml-5 lg:mt-0 mt-5">
-            <n-link
-              to="/contact"
-              active-class="lg:text-menu-active"
-              class="lg:group-hover:text-menu-active cursor-pointer transition-all duration-150"
-              @click.native="closeMenu"
-            >
-              Contact
-              <div
-                v-if="!isMobile"
-                class="flex justify-center pointer-events-none"
-              >
-                <div
-                  class="h-0.5 w-0 bg-btn rounded-lg transition-all duration-700 group-hover:w-full"
-                  :class="{
-                    'w-full': $route.name === 'contact',
-                    'w-0': $route.name !== 'contact',
-                  }"
-                ></div>
-              </div>
-            </n-link>
           </li>
         </ul>
       </menu>
@@ -181,6 +94,7 @@
 </template>
 
 <script>
+import getMenuGQL from '@/apollo/queries/getMenu.gql'
 export default {
   name: 'Menu',
   props: {
@@ -189,8 +103,18 @@ export default {
       required: true,
     },
   },
+  async fetch() {
+    const { data } = await this.$apollo.query({
+      query: getMenuGQL,
+      variables: {
+        name: 'header',
+      },
+    })
+    this.menu = data.menu.menuItems.nodes
+  },
   data() {
     return {
+      menu: [],
       isMobile: false,
     }
   },
@@ -204,6 +128,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.menu)
     this.isMobile = self.innerWidth <= 1024
     window.addEventListener('resize', this.handleResize)
   },

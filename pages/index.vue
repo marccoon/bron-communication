@@ -9,7 +9,8 @@
         >
           {{ page.title }}
         </h1>
-        <img loading="lazy"
+        <img
+          loading="lazy"
           src="~assets/img/homepage-bg.jpg"
           class="absolute top-0 bottom-0 left-0 right-0 h-full w-full object-cover z-0"
           alt=""
@@ -66,6 +67,7 @@
             :icon="service.icon"
             :title="service.title"
             :text="service.text"
+            :link="service.link"
           />
         </div>
       </div>
@@ -111,7 +113,6 @@ export default {
   }),
   mounted() {
     this.isFixTitle = window.innerWidth >= 1536
-    console.log(this.services)
   },
   methods: {
     fixTitle(evt, el) {

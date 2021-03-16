@@ -54,8 +54,9 @@
     </div>
     <div class="flex justify-center mt-2 container font-normal text-xl">
       <span>
-        Created by
-        <a class="" target="_blank" href="https://marccoon.com/">Marccoon</a>
+        <a class="" target="_blank" href="https://marccoon.com/">
+          Created by Marccoon
+        </a>
       </span>
     </div>
   </div>

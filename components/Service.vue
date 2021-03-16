@@ -4,7 +4,8 @@
       v-scroll="scrollHandler"
       class="flex sm:items-center items-start sm:flex-row start-animate-position flex-col"
     >
-      <img loading="lazy"
+      <img
+        loading="lazy"
         :src="'/icons/' + icon + '.png'"
         :alt="icon"
         class="sm:mr-10 sm:ml-0 mx-auto"
@@ -30,6 +31,7 @@
     ></div>
 
     <div
+      v-if="link && link.uri"
       v-scroll="scrollHandler"
       class="start-animate-position"
       @mouseover="active = true"
@@ -37,7 +39,7 @@
     >
       <n-link
         class="group text-link hover:text-link underline xl:text-2xl lg:text-xl sm:text-base text-xs xl:mt-5 lg:mt-4 sm:mt-5 mt-2.5 inline-flex items-center"
-        to="/"
+        :to="link.uri"
       >
         <span
           class="underline inline-block duration-700 transform group-hover:scale-110 transition-all"
@@ -45,7 +47,8 @@
           learn more
         </span>
 
-        <img loading="lazy"
+        <img
+          loading="lazy"
           class="ml-3 duration-700 transform group-hover:translate-x-5 transition-all group-hover:translate-x-6"
           src="~assets/img/link-arrow.svg"
           alt="arrow"
@@ -70,6 +73,10 @@ export default {
     text: {
       type: String,
       required: true,
+    },
+    link: {
+      type: Object,
+      default: () => {},
     },
   },
   data() {

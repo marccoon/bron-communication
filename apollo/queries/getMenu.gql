@@ -1,0 +1,16 @@
+query getMenu($name: ID!) {
+    menu(id: $name, idType: NAME) {
+        menuItems(where: {parentId: "null"}) {
+            nodes {
+                childItems {
+                    nodes {
+                        path
+                        label
+                    }
+                }
+                label
+                path
+            }
+        }
+    }
+}

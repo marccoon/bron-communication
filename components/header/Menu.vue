@@ -128,7 +128,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.menu)
     this.isMobile = self.innerWidth <= 1024
     window.addEventListener('resize', this.handleResize)
   },

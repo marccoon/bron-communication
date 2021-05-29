@@ -44,7 +44,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://bron-api.dev.fullstack.by/graphql',
+        httpEndpoint: 'https://wp.broncommunications.com/graphql',
       },
     },
   },
